@@ -1,0 +1,103 @@
+<form [formGroup]="cognitiveForm" (change)="submit()" (click)="submit()">
+  <div
+    class="cognitive-form offset-md-2"
+    id="cognitive-form"
+    formArrayName="cognitives"
+  >
+    <div
+      *ngFor="let cognitive of cognitiveForms.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div class="row mt-3 mb-4">
+        <div class="col-sm-12">
+          <h4 class="cognitive-header">Cognitives</h4>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="shape" class="col-sm-2 col-form-label">Shapes</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="shapes"
+            placeholder=""
+            formControlName="shapes"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="num-of-trails" class="col-sm-2 col-form-label"
+          >Number of Trails</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="num-of-trails"
+            placeholder=""
+            formControlName="noOfTrails"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="target-shape" class="col-sm-2 col-form-label"
+          >Target Shape</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="target-shape"
+            placeholder=""
+            formControlName="targetShape"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="time" class="col-sm-2 col-form-label">Time</label>
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="time"
+            placeholder=""
+            formControlName="time"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="color" class="col-sm-2 col-form-label">Color</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="color"
+            placeholder=""
+            formControlName="color"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-2">
+          <button
+            class="btn btn-outline-danger delete-cognitive mb-3"
+            (click)="deleteCognitive(i)"
+          >
+            Delete Cognitive
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <button
+          class="btn btn-outline-success add-cognitive"
+          (click)="addCognitive()"
+        >
+          Add Cognitive
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

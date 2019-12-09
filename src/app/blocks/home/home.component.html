@@ -1,0 +1,25 @@
+<div class="container">
+  <app-discrete-prompt
+    (messageEvent)="receiveDiscretePrompt($event)"
+  ></app-discrete-prompt>
+  <hr />
+  <app-numeric-prompt
+    (messageEvent)="receiveNumericPrompt($event)"
+  ></app-numeric-prompt>
+  <hr />
+  <app-cognitive (messageEvent)="receiveCognitive($event)"></app-cognitive>
+  <hr />
+  <app-watch (messageEvent)="receiveWatch($event)"></app-watch>
+  <hr />
+  <div class="row mb-5">
+    <div class="col-sm-12 offset-sm-2">
+      <button
+        type="submit"
+        class="btn btn-outline-primary"
+        (click)="postData()"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

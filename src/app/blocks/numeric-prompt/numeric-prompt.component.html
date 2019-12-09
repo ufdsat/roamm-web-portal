@@ -1,0 +1,139 @@
+<form [formGroup]="numericForm" (change)="submit()" (click)="submit()">
+  <div
+    class="numeric-prompt-form offset-md-2"
+    id="numeric-prompt-form"
+    formArrayName="numericPrompts"
+  >
+    <div
+      *ngFor="let numericPrompt of numericPromptForms.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div class="row mt-3 mb-4">
+        <div class="col-sm-12">
+          <h4 class="numeric-prompt-header">Numeric Prompt List</h4>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="longUIquestion" class="col-sm-2 col-form-label"
+          >Long UI Question</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="longUIquestion"
+            placeholder="Question to be displayed"
+            formControlName="longUIquestion"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="type" class="col-sm-2 col-form-label">Type Of</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="type"
+            placeholder="Range or Discreet"
+            formControlName="type"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="question" class="col-sm-2 col-form-label">Question</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="question"
+            placeholder="A short form of question to be displayed on watch"
+            formControlName="question"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="min" class="col-sm-2 col-form-label">Minimum Value</label>
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="min"
+            placeholder="Minimum value for the range question asked"
+            formControlName="min"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="max" class="col-sm-2 col-form-label">Maximum Value</label>
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="max"
+            placeholder="Maximum value for the range question asked"
+            formControlName="max"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inc" class="col-sm-2 col-form-label">Increment</label>
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="inc"
+            placeholder="How much to increment with step"
+            formControlName="inc"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="default" class="col-sm-2 col-form-label"
+          >Default Value</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="default"
+            placeholder="Default value to be selected when the question is asked"
+            formControlName="default"
+          />
+        </div>
+      </div>
+      <!-- <div class="form-group row">
+        <label for="time" class="col-sm-2 col-form-label">Time</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="time"
+            placeholder="List of times in a day(24 hours format) when to prompt the question"
+            formControlName="time"
+          />
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="col-sm-2">
+          <button
+            class="btn btn-outline-danger delete-numeric mb-3"
+            (click)="deleteNumericPrompt(i)"
+          >
+            Delete Numeric Prompt
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <button
+          class="btn btn-outline-success add-numeric"
+          (click)="addNumericPrompt()"
+        >
+          Add Numeric Prompt
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

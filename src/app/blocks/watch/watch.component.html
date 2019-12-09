@@ -1,0 +1,499 @@
+<form [formGroup]="watchForm" (change)="submit()" (click)="submit()">
+  <div class="watch-form offset-md-2" id="watch-form" formArrayName="watches">
+    <div
+      *ngFor="let watch of watchForms.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div class="row mt-3 mb-4">
+        <div class="col-sm-12">
+          <h4 class="discrete-prompt-header">Watch</h4>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="send-to-server" class="col-sm-2 form-check-label"
+          >Send to Server</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="send-to-server"
+            formControlName="SEND_TO_SERVER"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="location-rate" class="col-sm-2 form-check-label"
+          >Location Rate</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="location-rate"
+            placeholder=""
+            formControlName="location_rate"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="pressure-rate" class="col-sm-2 form-check-label"
+          >Pressure Rate</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="pressure-rate"
+            placeholder=""
+            formControlName="pressure_rate"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="prompts-time" class="col-sm-2 form-check-label"
+          >Prompts Time</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="prompts-time"
+            placeholder=""
+            formControlName="Prompts_time"
+          />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label
+          for="receive-config-from-server"
+          class="col-sm-2 form-check-label"
+          >Receive Config from Server</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="receive-config-from-server"
+            formControlName="RECEIVE_CONFIG_FROM_SERVER"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="prompt-start" class="col-sm-2 form-check-label"
+          >Prompt Start</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="prompt-start"
+            placeholder=""
+            formControlName="prompt_start"
+          />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="raw-mode" class="col-sm-2 form-check-label">Raw Mode</label>
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="raw-mode"
+            formControlName="RAW_MODE"
+          />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="location-active" class="col-sm-2 form-check-label"
+          >Location Active</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="location-active"
+            formControlName="location_active"
+          />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="battery-active" class="col-sm-2 form-check-label"
+          >Battery Active</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="battery-active"
+            formControlName="battery_active"
+          />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="save-locally" class="col-sm-2 form-check-label"
+          >Save Locally</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="save-locall"
+            formControlName="SAVE_LOCALLY"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="step-rate" class="col-sm-2 form-check-label"
+          >Step Rate</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="step-rate"
+            placeholder=""
+            formControlName="step_rate"
+          />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="uv-active" class="col-sm-2 form-check-label"
+          >UV Active</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="uv-active"
+            formControlName="UV_active"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="uv-rate" class="col-sm-2 form-check-label">UV Rate</label>
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="uv-rate"
+            placeholder=""
+            formControlName="UV_rate"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="collection-frequency" class="col-sm-2 form-check-label"
+          >Collection Frequency</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="collection-frequency"
+            placeholder=""
+            formControlName="COLLECTION_FREQUENCY"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="one-eighty-over-pi" class="col-sm-2 form-check-label"
+          >One Eighty Over PI</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="one-eighty-over-pi"
+            placeholder=""
+            formControlName="ONE_EIGHTY_OVER_PI"
+          />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="gyro-active" class="col-sm-2 form-check-label"
+          >Gyro Active</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="gyro-active"
+            formControlName="gyro_active"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="gyro-rate" class="col-sm-2 form-check-label"
+          >Gyro Rate</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="gyro-rate"
+            placeholder=""
+            formControlName="gyro_rate"
+          />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="heart-rate-active" class="col-sm-2 form-check-label"
+          >Heart Rate Active</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="heart-rate-active"
+            formControlName="heartrate_active"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="export-rate" class="col-sm-2 form-check-label"
+          >Export Rate</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="export-rate"
+            placeholder=""
+            formControlName="export_rate"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="battery-rate" class="col-sm-2 form-check-label"
+          >Battery Rate</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="battery-rate"
+            placeholder=""
+            formControlName="battery_rate"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="sampling-rate" class="col-sm-2 form-check-label"
+          >Sampling Rate</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="sampling-rate"
+            placeholder=""
+            formControlName="SAMPLING_RATE"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="prompt-rate" class="col-sm-2 form-check-label"
+          >Prompt Rate</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="prompt-rate"
+            placeholder=""
+            formControlName="prompt_rate"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="prompt-end" class="col-sm-2 form-check-label"
+          >Prompt End</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="prompt-end"
+            placeholder=""
+            formControlName="prompt_end"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="accel-rate" class="col-sm-2 form-check-label"
+          >Accel Rate</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="accel-rate"
+            placeholder=""
+            formControlName="accel_rate"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="heart-rate" class="col-sm-2 form-check-label"
+          >Heart Rate</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="number"
+            class="form-control"
+            id="heart-rate"
+            placeholder=""
+            formControlName="heartrate_rate"
+          />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="accel-active" class="col-sm-2 form-check-label"
+          >Accel Active</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="accel-active"
+            formControlName="accel_active"
+          />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="pressure-active" class="col-sm-2 form-check-label"
+          >Pressure Active</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="pressure-active"
+            formControlName="pressure_active"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="viable-construction-rate" class="col-sm-2 form-check-label"
+          >Viable Construction Rate</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="viable-construction-rate"
+            placeholder=""
+            formControlName="VIABLE_CONSTRUCTION_RATE"
+            value="1000 * 15"
+          />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="step-active" class="col-sm-2 form-check-label"
+          >Step Active</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="step-active"
+            formControlName="step_active"
+          />
+        </div>
+      </div>
+
+      <div class="row" formArrayName="features">
+        <div class="col-sm-2">Features</div>
+        <div class="col-sm-10">
+          <div
+            *ngFor="
+              let feature of watch.get('features')['controls'];
+              let iy = index
+            "
+          >
+            <div [formGroupName]="iy">
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="feature-questionId">Question Id</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="feature-questionId"
+                    placeholder=""
+                    formControlName="questionId"
+                  />
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label for="feature-question">Question</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="feature-question"
+                    placeholder=""
+                    formControlName="question"
+                  />
+                </div>
+                <div class="col-md-3">
+                  <label for="feature-calculate" class="form-check-label"
+                    >Calculate</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="feature-calculate"
+                    placeholder=""
+                    formControlName="calculate"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="row">
+        <div class="col-sm-2">
+          <button
+            class="btn btn-outline-danger delete-watch mb-3"
+            (click)="deleteWatch(i)"
+          >
+            Delete Watch
+          </button>
+        </div>
+      </div> -->
+    </div>
+    <!-- <div class="row">
+      <div class="col-sm-2">
+        <button class="btn btn-outline-success add-watch" (click)="addWatch()">
+          Add Watch
+        </button>
+      </div>
+    </div> -->
+  </div>
+</form>
