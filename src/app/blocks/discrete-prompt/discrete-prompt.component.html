@@ -18,13 +18,14 @@
           >Long UI Question</label
         >
         <div class="col-sm-6">
-          <input
+          <textarea
             type="text"
+            row="5"
             class="form-control"
             id="longUIquestion"
-            placeholder="Question"
+            placeholder="Describe your Question"
             formControlName="longUIquestion"
-          />
+          ></textarea>
         </div>
       </div>
 
@@ -55,64 +56,44 @@
       </div>
       <div class="row" formArrayName="values">
         <label class="col-sm-2 col-form-label">Values</label>
-        <div
-          class="form-row"
-          *ngFor="
-            let value of discretePrompt.get('values')['controls'];
-            let iy = index
-          "
-        >
-          <div class="col">
+        <div class="col-sm-10">
+          <div
+            *ngFor="
+              let value of discretePrompt.get('values')['controls'];
+              let iy = index
+            "
+          >
             <div [formGroupName]="iy">
-              <input
-                type="text"
-                class="form-control"
-                id="values"
-                placeholder="Enter a value"
-                formControlName="value"
-              />
+              <div class="form-row">
+                <div class="form-group col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="values"
+                    placeholder="Enter a discrete value"
+                    formControlName="value"
+                  />
+                </div>
+
+                <div class="form-group col-sm-3">
+                  <button
+                    class="btn btn-outline-danger"
+                    (click)="deleteValue(i, iy)"
+                  >
+                    Delete Value
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col">
-            <button
-              class="btn btn-outline-primary"
-              (click)="deleteValue(i, iy)"
-            >
-              Delete Value
-            </button>
-          </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-2 offset-sm-2 form-group">
           <button class="btn btn-outline-primary" (click)="addValue(i)">
             Add Value
           </button>
         </div>
       </div>
-      <div class="row"></div>
-      <!-- <div class="form-group row">
-        <label for="values" class="col-sm-2 col-form-label">Values</label>
-        <div class="col-sm-6">
-          <input
-            type="text"
-            class="form-control"
-            id="values"
-            placeholder="Enter a list of options"
-            formControlName="values"
-          />
-        </div>
-      </div> -->
-      <!-- <div class="form-group row">
-        <label for="time" class="col-sm-2 col-form-label">Time</label>
-        <div class="col-sm-6">
-          <input
-            type="text"
-            class="form-control"
-            id="time"
-            placeholder="List of times in a day(24 hours format) when to prompt the question"
-            formControlName="time"
-          />
-        </div>
-      </div> -->
+
       <div class="row">
         <div class="col-sm-2">
           <button

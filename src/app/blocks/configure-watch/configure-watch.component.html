@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-sm-12">
+      <h4 class="configure-watch-header">Configure Watch</h4>
+    </div>
+  </div>
+  <hr />
+  <div class="row mt-4">
+    <div class="col-md-4 form-group">
+      <select class="form-control campaign-dropdown">
+        <option value="" [selected]="true" [disabled]="true"
+          >Please Select a Campaign</option
+        >
+        <option *ngFor="let c of campaigns" [value]="c">
+          {{ c }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-4 form-group">
+      <select class="form-control participant-dropdown">
+        <option value="" [selected]="true" [disabled]="true"
+          >Please Select a Participant</option
+        >
+
+        <option *ngFor="let p of participants" [value]="p.join()">
+          {{ p.join() }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-4 form-group">
+      <input
+        type="text"
+        name="watchid"
+        id="watchid"
+        class="form-control"
+        placeholder="Please enter a Watch Id"
+      />
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-sm-3">
+      <button class="btn btn-outline-primary" (click)="submit()">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

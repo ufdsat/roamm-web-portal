@@ -6,14 +6,18 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: "./home.component.html"
 })
 export class HomeComponent {
-  readonly ROOT_URL = "";
+  readonly ROOT_URL =
+    "https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign";
   constructor(private http: HttpClient) {}
-
+  campaignid: any;
   discretePrompt: any;
   numericPrompt: any;
   cognitive: any;
   watch: any;
-
+  feature: any;
+  add(event) {
+    this.campaignid = event.target.value;
+  }
   receiveDiscretePrompt($event) {
     this.discretePrompt = $event;
   }
@@ -29,6 +33,9 @@ export class HomeComponent {
   receiveWatch($event) {
     this.watch = $event;
   }
+  receiveFeature($event) {
+    this.feature = $event;
+  }
 
   // submit() {
   //   console.log(
@@ -40,13 +47,20 @@ export class HomeComponent {
 
   postData() {
     const data = {
-      discretePrompt: this.discretePrompt,
-      numericPrompt: this.numericPrompt,
-      cognitive: this.cognitive,
-      watch: this.watch
+      campaignid: this.campaignid,
+      DiscreetPrompts: this.discretePrompt,
+      NumericPrompts: this.numericPrompt,
+      CognitiveParameters: this.cognitive,
+      WatchConfigurationParameters: this.watch,
+      Features: this.feature
     };
-    console.log(data);
+    const result = { item: data };
+    console.log(result);
+    console.log(JSON.stringify(result, null, 2));
     // this.http.post(this.ROOT_URL, data);
+    this.http.post(this.ROOT_URL, result).subscribe(data => {
+      console.log(data, "subscribe");
+    });
   }
 }
 // }

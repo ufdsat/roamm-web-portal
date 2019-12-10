@@ -4,6 +4,7 @@ import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { DiscretePromptComponent } from "./blocks/discrete-prompt/discrete-prompt.component";
 import { NumericPromptComponent } from "./blocks/numeric-prompt/numeric-prompt.component";
 import { CognitiveComponent } from "./blocks/cognitive/cognitive.component";
@@ -11,6 +12,8 @@ import { WatchComponent } from "./blocks/watch/watch.component";
 import { NavbarComponent } from "./blocks/partials/navbar.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ParticipantComponent } from "./blocks/participant/participant.component";
+import { FeatureComponent } from "./blocks/feature/feature.component";
+import { ConfigureWatchComponent } from "./blocks/configure-watch/configure-watch.component";
 import { HomeComponent } from "./blocks/home/home.component";
 
 @NgModule({
@@ -22,16 +25,20 @@ import { HomeComponent } from "./blocks/home/home.component";
     WatchComponent,
     ParticipantComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    ConfigureWatchComponent,
+    FeatureComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    NgbModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent },
-      { path: "Participant", component: ParticipantComponent }
+      { path: "Participant", component: ParticipantComponent },
+      { path: "ConfigureWatch", component: ConfigureWatchComponent }
     ])
   ],
   providers: [],

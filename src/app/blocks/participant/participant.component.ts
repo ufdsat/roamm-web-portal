@@ -7,7 +7,8 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ParticipantComponent implements OnInit {
   participantForm: FormGroup;
-  readonly ROOT_URL = "";
+  readonly ROOT_URL =
+    "https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/getparticipant";
   constructor(private http: HttpClient, private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -24,6 +25,11 @@ export class ParticipantComponent implements OnInit {
 
   submit() {
     // this.http.post(this.ROOT_URL, this.participantForm.value);
-    console.log(this.participantForm.value);
+    this.http
+      .post(this.ROOT_URL, this.participantForm.value)
+      .subscribe(data => {
+        console.log(data);
+      });
+    // console.log(this.participantForm.value);
   }
 }

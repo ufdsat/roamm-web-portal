@@ -52,11 +52,45 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="row" formArrayName="Prompts_time">
+        <label class="col-sm-2 col-form-label">Prompts Time</label>
+        <div class="col-sm-10">
+          <div
+            *ngFor="
+              let t of watch.get('Prompts_time')['controls'];
+              let iy = index
+            "
+          >
+            <div [formGroupName]="iy">
+              <div class="form-row">
+                <div class="form-group col-sm-5">
+                  <ngb-timepicker formControlName="time"></ngb-timepicker>
+                </div>
+
+                <div class="form-group col-sm-3">
+                  <button
+                    class="btn btn-outline-danger mt-4"
+                    (click)="deleteValue(i, iy)"
+                  >
+                    Delete Time
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2 offset-sm-2 form-group">
+          <button class="btn btn-outline-primary" (click)="addValue(i)">
+            Add Time
+          </button>
+        </div>
+      </div>
+      <!-- <div class="form-group row">
         <label for="prompts-time" class="col-sm-2 form-check-label"
           >Prompts Time</label
         >
-        <div class="col-sm-6">
+        <ngb-timepicker formControlName="Prompts_time"></ngb-timepicker> -->
+      <!-- <div class="col-sm-6">
           <input
             type="text"
             class="form-control"
@@ -64,8 +98,8 @@
             placeholder=""
             formControlName="Prompts_time"
           />
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
 
       <div class="row form-group">
         <label
@@ -426,74 +460,6 @@
           />
         </div>
       </div>
-
-      <div class="row" formArrayName="features">
-        <div class="col-sm-2">Features</div>
-        <div class="col-sm-10">
-          <div
-            *ngFor="
-              let feature of watch.get('features')['controls'];
-              let iy = index
-            "
-          >
-            <div [formGroupName]="iy">
-              <div class="form-row">
-                <div class="form-group col-md-3">
-                  <label for="feature-questionId">Question Id</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="feature-questionId"
-                    placeholder=""
-                    formControlName="questionId"
-                  />
-                </div>
-
-                <div class="form-group col-md-3">
-                  <label for="feature-question">Question</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="feature-question"
-                    placeholder=""
-                    formControlName="question"
-                  />
-                </div>
-                <div class="col-md-3">
-                  <label for="feature-calculate" class="form-check-label"
-                    >Calculate</label
-                  >
-                  <input
-                    type="checkbox"
-                    class="form-check-input"
-                    id="feature-calculate"
-                    placeholder=""
-                    formControlName="calculate"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="row">
-        <div class="col-sm-2">
-          <button
-            class="btn btn-outline-danger delete-watch mb-3"
-            (click)="deleteWatch(i)"
-          >
-            Delete Watch
-          </button>
-        </div>
-      </div> -->
     </div>
-    <!-- <div class="row">
-      <div class="col-sm-2">
-        <button class="btn btn-outline-success add-watch" (click)="addWatch()">
-          Add Watch
-        </button>
-      </div>
-    </div> -->
   </div>
 </form>

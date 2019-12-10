@@ -17,7 +17,6 @@ export class DiscretePromptComponent implements OnInit {
       question: [],
       type: [{ value: "discreet", disabled: true }],
       longUIquestion: [],
-      // time: [],
       values: this.fb.array([this.valuesArr()])
     });
     this.discretePromptForms.push(discretePrompt);

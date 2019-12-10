@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
   templateUrl: "./watch.component.html"
 })
 export class WatchComponent implements OnInit {
+  // time = { hour: 13, minute: 30 };
   watchForm: FormGroup;
   featuresQuestion: any;
 
@@ -25,7 +26,8 @@ export class WatchComponent implements OnInit {
       SEND_TO_SERVER: [],
       location_rate: [],
       pressure_rate: [],
-      Prompts_time: [],
+      // Prompts_time: [{ hour: 3, minute: 10 }],
+      Prompts_time: this.fb.array([this.timeArr()]),
       RECEIVE_CONFIG_FROM_SERVER: [],
       WATCH_ID: [],
       prompt_start: [],
@@ -51,56 +53,47 @@ export class WatchComponent implements OnInit {
       accel_active: [],
       pressure_active: [],
       VIABLE_CONSTRUCTION_RATE: [],
-      step_active: [],
-      features: this.fb.array(this.createForm())
+      step_active: []
+      // features: this.fb.array([this.buildFeature()])
     });
     this.watchForms.push(watch);
+  }
+  timeArr(): FormGroup {
+    return this.fb.group({
+      time: [{ hour: 3, minute: 10 }]
+    });
+  }
+  addValue(i) {
+    const timeArray = this.watchForm
+      .get("watches")
+      ["controls"][i].get("Prompts_time") as FormArray;
+    timeArray.push(this.timeArr());
+  }
+  deleteValue(i, iy) {
+    const timeArray = this.watchForm
+      .get("watches")
+      ["controls"][i].get("Prompts_time") as FormArray;
+    timeArray.removeAt(iy);
   }
 
   get watchForms() {
     return this.watchForm.get("watches") as FormArray;
   }
 
-  createForm() {
-    this.featuresQuestion = [
-      "mvm",
-      "svdm",
-      "mangle",
-      "sdangle",
-      "df",
-      "fpdf",
-      "p625"
-    ];
-    var arr = [];
-
-    for (const f of this.featuresQuestion) {
-      arr.push(this.buildFeature(f));
-    }
-    return arr;
-  }
-
-  buildFeature(x) {
+  buildFeature() {
     return this.fb.group({
-      questionId: [],
-      question: [x],
+      // questionId: [],
+      question: [],
       calculate: []
     });
   }
-
-  // addFeature(i, features) {
-  //   // this.watchForms.controls[i].controls.features.push(this.buildFeature);
-  //   features.push(this.buildFeature());
-  // }
-  // get featureArray() {
-  //   return this.watchForms.get("watches") as FormArray;
-  // }
 
   addWatch() {
     const watch = this.fb.group({
       SEND_TO_SERVER: [],
       location_rate: [],
       pressure_rate: [],
-      Prompts_time: [],
+      Prompts_time: this.fb.array([this.timeArr()]),
       RECEIVE_CONFIG_FROM_SERVER: [],
       WATCH_ID: [],
       prompt_start: [],
@@ -127,8 +120,8 @@ export class WatchComponent implements OnInit {
       pressure_active: [],
       VIABLE_CONSTRUCTION_RATE: [],
       step_active: [],
-      sample_onme: [],
-      features: this.fb.array(this.createForm())
+      sample_onme: []
+      // features: this.fb.array([this.buildFeature()])
     });
     this.watchForms.push(watch);
     // console.log("watch forms", this.watchForms);
