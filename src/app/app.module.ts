@@ -14,6 +14,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ParticipantComponent } from "./blocks/participant/participant.component";
 import { FeatureComponent } from "./blocks/feature/feature.component";
 import { ConfigureWatchComponent } from "./blocks/configure-watch/configure-watch.component";
+import { WatchStatusComponent } from "./blocks/watch-status/watch-status.component";
 import { HomeComponent } from "./blocks/home/home.component";
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HomeComponent } from "./blocks/home/home.component";
     HomeComponent,
     NavbarComponent,
     ConfigureWatchComponent,
-    FeatureComponent
+    FeatureComponent,
+    WatchStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { HomeComponent } from "./blocks/home/home.component";
     RouterModule.forRoot([
       { path: "", component: HomeComponent },
       { path: "Participant", component: ParticipantComponent },
-      { path: "ConfigureWatch", component: ConfigureWatchComponent }
+      { path: "ConfigureWatch", component: ConfigureWatchComponent },
+      { path: "WatchStatus", component: WatchStatusComponent }
     ])
   ],
   providers: [],

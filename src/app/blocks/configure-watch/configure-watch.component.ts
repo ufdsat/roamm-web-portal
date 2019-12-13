@@ -20,8 +20,9 @@ export class ConfigureWatchComponent {
       this.campaigns = data;
     });
     this.http.get(this.ROOT_URL_PARTICIPANT).subscribe(data => {
-      console.log(data.participant);
-      this.participants = data.participant;
+      // console.log(data.participant);
+      // this.participants = data.participant;
+      this.participants = data;
     });
   }
   submit() {
