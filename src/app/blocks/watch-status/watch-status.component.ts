@@ -1,14 +1,28 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { NgbModal, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
+import { NgbdModalComponentModule } from "../modal/modal-component.module";
+import { HttpClient } from "@angular/common/http";
+// import { ModalComponent } from "../modal/modal.component";
 @Component({
   selector: "app-watch-status",
   templateUrl: "./watch-status.component.html"
 })
-export class WatchStatusComponent {
+export class WatchStatusComponent implements OnInit {
   // numericForm: FormGroup;
-
-  constructor(private fb: FormBuilder) {}
-
+  // data: any;
+  constructor(
+    private fb: FormBuilder,
+    private modalService: NgbModal,
+    private http: HttpClient
+  ) {}
+  ngOnInit() {
+    this.http
+      .get("assets/data.csv", { responseType: "csv" as "json" })
+      .subscribe(function(d) {
+        console.log(d);
+      });
+  }
   data = {
     statusCode: 200,
     body: {
@@ -706,4 +720,8 @@ export class WatchStatusComponent {
       }
     }
   };
+
+  // openModal() {
+  //   const modalRef = this.modalService.open(ModalComponent);
+  // }
 }
