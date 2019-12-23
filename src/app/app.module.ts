@@ -17,7 +17,8 @@ import { ConfigureWatchComponent } from './blocks/configure-watch/configure-watc
 import { WatchStatusComponent } from './blocks/watch-status/watch-status.component';
 import { HomeComponent } from './blocks/home/home.component';
 import { NgbdModalComponentModule } from './blocks/modal/modal-component.module';
-import { ChartComponent } from './blocks/charts/charts.component';
+import { GraphsComponent } from './blocks/graphs/graphs.component';
+// import { ChartComponent } from './blocks/charts/charts.component';
 // import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ChartComponent } from './blocks/charts/charts.component';
 		ConfigureWatchComponent,
 		FeatureComponent,
 		WatchStatusComponent
+		// GraphsComponent
 		// ChartComponent
 		// NgbdModalComponentModule
 	],
@@ -48,8 +50,8 @@ import { ChartComponent } from './blocks/charts/charts.component';
 			{ path: '', component: HomeComponent },
 			{ path: 'Participant', component: ParticipantComponent },
 			{ path: 'ConfigureWatch', component: ConfigureWatchComponent },
-			{ path: 'WatchStatus', component: WatchStatusComponent },
-			{ path: 'Chart', component: ChartComponent }
+			{ path: 'WatchStatus', component: WatchStatusComponent }
+			// { path: 'Chart', component: ChartComponent }
 		])
 	],
 	providers: [ NgbActiveModal ],

@@ -12,30 +12,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of data.body.Items">
+        <tr *ngFor="let item of data1.body.Items">
           <td>{{ item.participantid }}</td>
           <td>{{ item.campaignid }}</td>
           <td>{{ item.watchid }}</td>
-          <td><ngbd-modal-component></ngbd-modal-component></td>
-          <td><ngbd-modal-component></ngbd-modal-component></td>
-          <td><ngbd-modal-component></ngbd-modal-component></td>
-          <!-- <td>
-            <tr *ngFor="let np of item.campaign.NumericPrompts">
-              <td>{{ np.question }}</td>
-            </tr>
-          </td>
-
-          <td>
-            <tr *ngFor="let f of item.campaign.Features">
-              <td>{{ f.question }}</td>
-            </tr>
-          </td>
-
-          <td>
-            <tr *ngFor="let dp of item.campaign.DiscreetPrompts">
-              <td>{{ dp.question }}</td>
-            </tr>
-          </td> -->
+          <td><ngbd-modal-component (click)='numericPromptModal(item.watchid, 1)'></ngbd-modal-component></td>
+          <td><ngbd-modal-component (click)='numericPromptModal(item.watchid, 4)'></ngbd-modal-component></td>
+          <td><ngbd-modal-component (click)='numericPromptModal(item.watchid, 91)'></ngbd-modal-component></td>
         </tr>
       </tbody>
     </table>

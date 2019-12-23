@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ChartComponent } from '../charts/charts.component';
+import { WatchStatusComponent } from '../watch-status/watch-status.component';
 
 @Component({
 	selector: 'ngbd-modal-content',
