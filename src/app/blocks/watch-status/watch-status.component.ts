@@ -17,11 +17,7 @@ export class WatchStatusComponent implements OnInit {
     private http: HttpClient
   ) {}
   ngOnInit() {
-    this.http
-      .get("assets/data.csv", { responseType: "csv" as "json" })
-      .subscribe(function(d) {
-        console.log(d);
-      });
+    
   }
   data = {
     statusCode: 200,

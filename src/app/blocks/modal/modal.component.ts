@@ -1,26 +1,26 @@
-import { Component, Input } from "@angular/core";
-import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { ChartComponent } from "../charts/charts.component";
+import { Component, Input } from '@angular/core';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ChartComponent } from '../charts/charts.component';
 
 @Component({
-  selector: "ngbd-modal-content",
-  templateUrl: "./modal-content.component.html"
+	selector: 'ngbd-modal-content',
+	templateUrl: './modal-content.component.html'
 })
 export class NgbdModalContent {
-  @Input() name;
+	@Input() name;
 
-  constructor(public activeModal: NgbActiveModal) {}
+	constructor(public activeModal: NgbActiveModal) {}
 }
 
 @Component({
-  selector: "ngbd-modal-component",
-  templateUrl: "./modal.component.html"
+	selector: 'ngbd-modal-component',
+	templateUrl: './modal.component.html'
 })
 export class NgbdModalComponent {
-  constructor(private modalService: NgbModal) {}
+	constructor(private modalService: NgbModal) {}
 
-  open() {
-    const modalRef = this.modalService.open(NgbdModalContent);
-    modalRef.componentInstance.name = "World";
-  }
+	open() {
+		const modalRef = this.modalService.open(NgbdModalContent);
+		modalRef.componentInstance.name = 'World';
+	}
 }
