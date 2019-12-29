@@ -23,7 +23,6 @@ export class WatchStatusComponent implements OnInit {
 		this.data.currentWatchData.subscribe((data) => (this.watchData = data));
 	}
 	public numericPromptModal(watchid, questionid) {
-		// console.log('Numeric Prompt Clicked', watchid, campaignid);
 		this.http
 			.get<any>(
 				'https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/apifordata?watchid=' +
@@ -32,7 +31,6 @@ export class WatchStatusComponent implements OnInit {
 					questionid
 			)
 			.subscribe((d) => this.data.changeData(d));
-		// this.data.changeData(watchid);
 	}
 	data1 = {
 		statusCode: 200,

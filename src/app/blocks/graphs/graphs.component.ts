@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { DataService } from '../data.service';
 import * as d3 from 'd3';
 
@@ -6,33 +6,38 @@ import * as d3 from 'd3';
 	selector: 'app-graphs',
 	templateUrl: './graphs.component.html'
 })
-export class GraphsComponent implements OnInit, AfterViewInit {
+export class GraphsComponent implements OnInit, AfterViewInit, OnChanges {
 	watchData: any;
 	constructor(private data: DataService) {}
 
 	ngOnInit() {
-		this.data.currentWatchData.subscribe((data) => (this.watchData = data));
-		console.log('from graphs component');
-		console.log(this.watchData);
+		this.data.currentWatchData.subscribe((data) => {
+			this.watchData = data;
+		});
 	}
-	ngAfterViewInit() {
-		if (this.watchData != null) {
-			console.log(this.watchData);
-			this.drawGraph(this.watchData);
-		}
+	ngOnChanges(changes: SimpleChanges) {
+		// this.drawGraph(this.watchData);
+
+		console.log(changes);
 	}
+	ngAfterViewInit() {}
 
 	drawGraph(data) {
+		console.log('inside graph', data);
 		var margin = { top: 20, right: 20, bottom: 100, left: 50 },
 			width = 960 - margin.left - margin.right,
 			height = 500 - margin.top - margin.bottom;
 		function formatTimeF(timestamp: string) {
 			var parseTime = d3.timeParse('%m/%d/%Y, %H:%M:%S');
-			// var formatTime = d3.timeFormat('%m/%d/%Y, %H:%M:%S');
-			console.log(typeof parseTime(timestamp));
-
 			return parseTime(timestamp);
 		}
+		data.values.forEach(function(d) {
+			if (d.value != 'None') {
+				d.collectedtimestamp = formatTimeF(d.collectedtimestamp);
+				d.value = +d.value;
+			}
+		});
+
 		var x = d3.scaleTime().range([ 0, width ]);
 		var y = d3.scaleLinear().range([ height, 0 ]);
 		var valueline = d3
@@ -56,13 +61,6 @@ export class GraphsComponent implements OnInit, AfterViewInit {
 			.append('g')
 			.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-		data.values.forEach(function(d) {
-			if (d.value != 'None') {
-				d.collectedtimestamp = formatTimeF(d.collectedtimestamp);
-				d.value = +d.value;
-			}
-		});
-
 		x.domain(<[Date, Date]>d3.extent(data.values, function(d: any) {
 			return d.collectedtimestamp;
 		}));
@@ -73,7 +71,7 @@ export class GraphsComponent implements OnInit, AfterViewInit {
 			})
 		]);
 
-		// svg.append('path').data([ data.values ]).attr('class', 'line').attr('d', valueline);
+		svg.append('path').data([ data.values ]).attr('class', 'line').attr('d', valueline);
 
 		// Add the scatterplot
 		svg
@@ -83,8 +81,6 @@ export class GraphsComponent implements OnInit, AfterViewInit {
 			.append('circle')
 			.attr('r', 5)
 			.attr('cx', function(d: any) {
-				// d.collectedtimestamp = formatTimeF(d.collectedtimestamp);
-				// console.log(x(d.collectedtimestamp));
 				return x(d.collectedtimestamp);
 			})
 			.attr('cy', function(d: any) {
