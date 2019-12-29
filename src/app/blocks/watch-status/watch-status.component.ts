@@ -20,7 +20,7 @@ export class WatchStatusComponent implements OnInit {
 		private data: DataService
 	) {}
 	ngOnInit() {
-		this.data.currentWatchData.subscribe((data) => (this.watchData = data));
+		// this.data.currentWatchData.subscribe((data) => (this.watchData = data));
 	}
 	public numericPromptModal(watchid, questionid) {
 		this.http
@@ -30,7 +30,9 @@ export class WatchStatusComponent implements OnInit {
 					'+' +
 					questionid
 			)
-			.subscribe((d) => this.data.changeData(d));
+			.subscribe((d) => {
+				this.data.sendData(d);
+			});
 	}
 	data1 = {
 		statusCode: 200,

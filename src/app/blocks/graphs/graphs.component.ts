@@ -12,10 +12,11 @@ export class GraphsComponent {
 	message$: any;
 	subscription: Subscription;
 	constructor(private data: DataService) {
-		this.data.currentWatchData.subscribe((data) => {
-			this.watchData = data;
-			if (this.watchData) {
-				this.drawGraph(this.watchData);
+		//subscribe to data changes
+		this.subscription = this.data.getData().subscribe((data) => {
+			if (data) {
+				console.log('Inside constructor');
+				this.drawGraph(data);
 			}
 		});
 	}
@@ -26,7 +27,6 @@ export class GraphsComponent {
 		}
 	}
 	drawGraph(data) {
-		console.log('inside graph', data);
 		var margin = { top: 20, right: 20, bottom: 100, left: 50 },
 			width = 960 - margin.left - margin.right,
 			height = 500 - margin.top - margin.bottom;
