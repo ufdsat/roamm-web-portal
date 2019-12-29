@@ -17,8 +17,21 @@ input[type="checkbox"] {
 	stroke: steelblue;
 	stroke-width: 2px;
 }
-.modal-body {
-	overflow: auto;
-	// height: 100%;
-	// width: 1000px;
+
+.modal-content {
+	width: 1000px !important;
+	left: 50%;
+	transform: translateX(-50%);
+}
+div.tooltip-scatter {
+	position: absolute;
+	text-align: center;
+	padding: .5rem;
+	background: #ffffff;
+	color: #313639;
+	border: 1px solid #c8cdd1;
+	border-radius: 8px;
+	pointer-events: none;
+	font-size: 1rem;
+	z-index: 10000;
 }

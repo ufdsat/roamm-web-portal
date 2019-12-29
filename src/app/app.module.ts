@@ -18,6 +18,7 @@ import { WatchStatusComponent } from './blocks/watch-status/watch-status.compone
 import { HomeComponent } from './blocks/home/home.component';
 import { NgbdModalComponentModule } from './blocks/modal/modal-component.module';
 import { GraphsComponent } from './blocks/graphs/graphs.component';
+// import { SpinnerComponent } from './ui/spinner/spinner.component';
 // import { ChartComponent } from './blocks/charts/charts.component';
 // import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
@@ -34,6 +35,7 @@ import { GraphsComponent } from './blocks/graphs/graphs.component';
 		ConfigureWatchComponent,
 		FeatureComponent,
 		WatchStatusComponent
+		// SpinnerComponent
 		// GraphsComponent
 		// ChartComponent
 		// NgbdModalComponentModule

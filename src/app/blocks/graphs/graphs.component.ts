@@ -9,7 +9,6 @@ import { Subscription } from 'rxjs';
 })
 export class GraphsComponent {
 	watchData: any;
-	message$: any;
 	subscription: Subscription;
 	constructor(private data: DataService) {
 		//subscribe to data changes
@@ -30,7 +29,7 @@ export class GraphsComponent {
 		var margin = { top: 20, right: 20, bottom: 100, left: 50 },
 			width = 960 - margin.left - margin.right,
 			height = 500 - margin.top - margin.bottom;
-		function formatTimeF(timestamp: string) {
+		function formatTimeF(timestamp: string): Object {
 			var parseTime = d3.timeParse('%m/%d/%Y, %H:%M:%S');
 			return parseTime(timestamp);
 		}
@@ -46,8 +45,6 @@ export class GraphsComponent {
 		var valueline = d3
 			.line()
 			.x(function(d: any) {
-				// d.collectedtimestamp = formatTimeF(d.collectedtimestamp);
-				// console.log(x(d.collectedtimestamp));
 				formatTimeF(d.collectedtimestamp);
 				return x(d.collectedtimestamp);
 			})
@@ -56,6 +53,7 @@ export class GraphsComponent {
 					return y(d.value);
 				}
 			});
+		var tooltip = d3.select('body').append('div').attr('class', 'tooltip-scatter').style('opacity', 0);
 		var svg = d3
 			.select('#graph')
 			.append('svg')
@@ -74,7 +72,7 @@ export class GraphsComponent {
 			})
 		]);
 
-		svg.append('path').data([ data.values ]).attr('class', 'line').attr('d', valueline);
+		// svg.append('path').data([ data.values ]).attr('class', 'line').attr('d', valueline);
 
 		// Add the scatterplot
 		svg
@@ -90,7 +88,25 @@ export class GraphsComponent {
 				return y(d.value);
 			})
 			.style('fill', 'steelblue')
-			.style('stroke', 'steelblue');
+			.style('stroke', 'steelblue')
+			.on('mouseover', function(d: any) {
+				d3.select(this).transition().duration(50).attr('opacity', '.85');
+				tooltip
+					.transition()
+					.duration(50)
+					.style('opacity', 1)
+					.style('left', d3.event.pageX + 10 + 'px')
+					.style('top', d3.event.pageY - 15 + 'px');
+				var format = d3.timeFormat('%m/%d/%Y, %H:%M:%S');
+				tooltip.html(
+					'<span>Date: ' + format(d.collectedtimestamp) + '</span><br><span> Value: ' + d.value + '</span>'
+				);
+			})
+			.on('mouseout', function(d, i) {
+				d3.select(this).transition().duration(50).attr('opacity', '1');
+
+				tooltip.transition().duration(50).style('opacity', 0);
+			});
 
 		// Add the X Axis
 		svg.append('g').attr('transform', 'translate(0,' + height + ')').call(d3.axisBottom(x));
