@@ -15,4 +15,7 @@ export class DataService {
 	changeData(data) {
 		this.watchData.next(data);
 	}
+	clearData() {
+		this.watchData.next('');
+	}
 }

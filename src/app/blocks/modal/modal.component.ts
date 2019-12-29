@@ -10,7 +10,10 @@ import { DataService } from '../data.service';
 export class NgbdModalContent {
 	@Input() name;
 
-	constructor(public activeModal: NgbActiveModal) {}
+	constructor(public activeModal: NgbActiveModal, private data: DataService) {}
+	clearData() {
+		this.data.clearData();
+	}
 }
 
 @Component({
@@ -18,7 +21,7 @@ export class NgbdModalContent {
 	templateUrl: './modal.component.html'
 })
 export class NgbdModalComponent {
-	constructor(private modalService: NgbModal) {}
+	constructor(private modalService: NgbModal, private data: DataService) {}
 
 	open() {
 		const modalRef = this.modalService.open(NgbdModalContent);

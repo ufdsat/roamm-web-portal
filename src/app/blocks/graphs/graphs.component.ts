@@ -1,27 +1,30 @@
 import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { DataService } from '../data.service';
 import * as d3 from 'd3';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-graphs',
 	templateUrl: './graphs.component.html'
 })
-export class GraphsComponent implements OnInit, AfterViewInit, OnChanges {
+export class GraphsComponent {
 	watchData: any;
-	constructor(private data: DataService) {}
-
-	ngOnInit() {
+	message$: any;
+	subscription: Subscription;
+	constructor(private data: DataService) {
 		this.data.currentWatchData.subscribe((data) => {
 			this.watchData = data;
+			if (this.watchData) {
+				this.drawGraph(this.watchData);
+			}
 		});
 	}
-	ngOnChanges(changes: SimpleChanges) {
-		// this.drawGraph(this.watchData);
-
-		console.log(changes);
+	ngOnDestroy() {
+		// unsubscribe to ensure no memory leaks
+		if (this.subscription) {
+			this.subscription.unsubscribe();
+		}
 	}
-	ngAfterViewInit() {}
-
 	drawGraph(data) {
 		console.log('inside graph', data);
 		var margin = { top: 20, right: 20, bottom: 100, left: 50 },
@@ -94,6 +97,5 @@ export class GraphsComponent implements OnInit, AfterViewInit, OnChanges {
 
 		// Add the Y Axis
 		svg.append('g').call(d3.axisLeft(y));
-		console.log(data);
 	}
 }
