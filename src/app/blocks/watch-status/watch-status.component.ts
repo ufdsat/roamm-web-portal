@@ -13,6 +13,7 @@ export class WatchStatusComponent implements OnInit {
 	// numericForm: FormGroup;
 	// data: any;
 	watchData: any;
+
 	constructor(
 		private fb: FormBuilder,
 		private modalService: NgbModal,
@@ -22,18 +23,19 @@ export class WatchStatusComponent implements OnInit {
 	ngOnInit() {
 		// this.data.currentWatchData.subscribe((data) => (this.watchData = data));
 	}
-	public numericPromptModal(watchid, questionid) {
-		this.http
-			.get<any>(
-				'https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/apifordata?watchid=' +
-					watchid +
-					'+' +
-					questionid
-			)
-			.subscribe((d) => {
-				this.data.sendData(d);
-			});
-	}
+	// public numericPromptModal(watchid, questionid) {
+	// 	this.http
+	// 		.get<any>(
+	// 			'https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/apifordata?watchid=' +
+	// 				watchid +
+	// 				'+' +
+	// 				questionid
+	// 		)
+	// 		.subscribe((d) => {
+	// 			this.data.sendData(d);
+	// 		});
+	// }
+
 	data1 = {
 		statusCode: 200,
 		body: {

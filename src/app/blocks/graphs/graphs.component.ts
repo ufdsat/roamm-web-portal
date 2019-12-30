@@ -14,7 +14,7 @@ export class GraphsComponent {
 		//subscribe to data changes
 		this.subscription = this.data.getData().subscribe((data) => {
 			if (data) {
-				console.log('Inside constructor');
+				console.log('Inside graph constructor');
 				this.drawGraph(data);
 			}
 		});

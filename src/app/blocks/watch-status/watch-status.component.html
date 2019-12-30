@@ -16,9 +16,10 @@
           <td>{{ item.participantid }}</td>
           <td>{{ item.campaignid }}</td>
           <td>{{ item.watchid }}</td>
-          <td><ngbd-modal-component (click)='numericPromptModal(item.watchid, 1)'></ngbd-modal-component></td>
-          <td><ngbd-modal-component (click)='numericPromptModal(item.watchid, 4)'></ngbd-modal-component></td>
-          <td><ngbd-modal-component (click)='numericPromptModal(item.watchid, 91)'></ngbd-modal-component></td>
+          <td><ngbd-modal-component [watchId]="item.watchid"></ngbd-modal-component></td>
+          <td><ngbd-modal-component></ngbd-modal-component></td>
+          <td><ngbd-modal-component></ngbd-modal-component></td>
+          <!-- 1 4 91 -->
         </tr>
       </tbody>
     </table>

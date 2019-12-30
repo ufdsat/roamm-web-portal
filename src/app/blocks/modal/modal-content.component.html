@@ -5,20 +5,37 @@
       type="button"
       class="close"
       aria-label="Close"
-      (click)="activeModal.dismiss('Cross click'); clearData();"
+      (click)="activeModal.dismiss('Cross click');"
     >
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-      <app-spinner *ngIf="showSpinner"></app-spinner>
+      <!-- <app-spinner *ngIf="showSpinner"></app-spinner> -->
       <app-graphs></app-graphs>
+      
+      <div class="form-check form-check-inline ml-4">
+        <input class="form-check-input" type="checkbox" id="question-id-1" value="1" (change)="toggleEvent($event)" >
+        <label class="form-check-label" for="question-id-1">1</label>
+      </div>
+    
+      <div class="form-check form-check-inline ml-4">
+        <input class="form-check-input" type="checkbox" id="question-id-2" value="2" (change)="toggleEvent($event)">
+        <label class="form-check-label" for="question-id-2">2</label>
+      </div>
+      <div class="form-check form-check-inline ml-4">
+        <input class="form-check-input" type="checkbox" id="question-id-3" value="3" (change)="toggleEvent($event)">
+        <label class="form-check-label" for="question-id-3">3</label>
+      </div>
+      
+      
+      
   </div>
   <div class="modal-footer">
     <button
       type="button"
       class="btn btn-outline-dark"
-      (click)="activeModal.close('Close click'); clearData();"
+      (click)="activeModal.close('Close click');"
     >
       Close
     </button>
