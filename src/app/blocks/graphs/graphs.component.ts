@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { Subscription } from 'rxjs';
 
 @Component({
-	selector: 'app-graphs',
+	selector: '[graph]',
 	templateUrl: './graphs.component.html'
 })
 export class GraphsComponent {

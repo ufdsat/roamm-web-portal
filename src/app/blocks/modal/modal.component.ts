@@ -12,12 +12,19 @@ import { HttpClient } from '@angular/common/http';
 export class NgbdModalContent {
 	@Input() name;
 	questionId: any;
+	category: string;
 	subscription: Subscription;
 	showSpinner: boolean = true;
+	questionIdList: any;
 	@Output() questionIdEvent = new EventEmitter<any>();
 
 	constructor(public activeModal: NgbActiveModal, private data: DataService, private http: HttpClient) {}
-
+	ngOnInit() {
+		this.questionIdList =
+			this.category == 'Numeric Prompts'
+				? [ 1, 2, 3 ]
+				: this.category == 'Discrete Promptss' ? [ 4, 5, 6 ] : [ 91, 92, 93 ];
+	}
 	toggleEvent(event) {
 		if (event.target.checked) {
 			this.questionId = event.target.value;
@@ -32,6 +39,7 @@ export class NgbdModalContent {
 })
 export class NgbdModalComponent {
 	@Input('watchId') watchId: string;
+	@Input('category') category: string;
 	questionId: any;
 	subscription: Subscription;
 	constructor(private modalService: NgbModal, private data: DataService, private http: HttpClient) {}
@@ -39,6 +47,7 @@ export class NgbdModalComponent {
 	open() {
 		const modalRef = this.modalService.open(NgbdModalContent, { windowClass: 'modal-class' });
 		modalRef.componentInstance.name = 'World';
+		modalRef.componentInstance.category = this.category;
 		modalRef.componentInstance.questionIdEvent.subscribe((value) => {
 			this.questionId = value;
 			this.numericPromptModal(this.watchId, this.questionId);
@@ -46,6 +55,7 @@ export class NgbdModalComponent {
 	}
 
 	public numericPromptModal(watchid, questionid) {
+		console.log(watchid, questionid);
 		this.http
 			.get<any>(
 				'https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/apifordata?watchid=' +
@@ -54,7 +64,6 @@ export class NgbdModalComponent {
 					questionid
 			)
 			.subscribe((d) => {
-				console.log(d);
 				this.data.sendData(d);
 			});
 	}

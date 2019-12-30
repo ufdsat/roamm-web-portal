@@ -10,8 +10,6 @@ import { DataService } from '../data.service';
 	templateUrl: './watch-status.component.html'
 })
 export class WatchStatusComponent implements OnInit {
-	// numericForm: FormGroup;
-	// data: any;
 	watchData: any;
 
 	constructor(
@@ -20,21 +18,7 @@ export class WatchStatusComponent implements OnInit {
 		private http: HttpClient,
 		private data: DataService
 	) {}
-	ngOnInit() {
-		// this.data.currentWatchData.subscribe((data) => (this.watchData = data));
-	}
-	// public numericPromptModal(watchid, questionid) {
-	// 	this.http
-	// 		.get<any>(
-	// 			'https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/apifordata?watchid=' +
-	// 				watchid +
-	// 				'+' +
-	// 				questionid
-	// 		)
-	// 		.subscribe((d) => {
-	// 			this.data.sendData(d);
-	// 		});
-	// }
+	ngOnInit() {}
 
 	data1 = {
 		statusCode: 200,
