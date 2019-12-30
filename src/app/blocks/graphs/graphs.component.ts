@@ -26,6 +26,13 @@ export class GraphsComponent {
 		}
 	}
 	drawGraph(data) {
+		// d3.select("#barChart").select("svg").remove();
+		// if (d3.select('#graph').select('svg')) {
+		// 	console.log('graph exists');
+		// } else {
+		// 	console.log('graph does not exist');
+		// }
+		d3.select('#graph').select('svg').remove();
 		var margin = { top: 20, right: 20, bottom: 100, left: 50 },
 			width = 960 - margin.left - margin.right,
 			height = 500 - margin.top - margin.bottom;
@@ -87,8 +94,9 @@ export class GraphsComponent {
 			.attr('cy', function(d: any) {
 				return y(d.value);
 			})
-			.style('fill', 'steelblue')
-			.style('stroke', 'steelblue')
+			.style('fill', 'white')
+			.style('stroke', '#75B9BE')
+			.style('stroke-width', '3px')
 			.on('mouseover', function(d: any) {
 				d3.select(this).transition().duration(50).attr('opacity', '.85');
 				tooltip

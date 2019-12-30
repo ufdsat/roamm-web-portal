@@ -14,7 +14,7 @@ export class NgbdModalContent {
 	questionId: any;
 	category: string;
 	subscription: Subscription;
-	showSpinner: boolean = true;
+	showSpinner: boolean = false;
 	questionIdList: any;
 	@Output() questionIdEvent = new EventEmitter<any>();
 
@@ -23,10 +23,14 @@ export class NgbdModalContent {
 		this.questionIdList =
 			this.category == 'Numeric Prompts'
 				? [ 1, 2, 3 ]
-				: this.category == 'Discrete Promptss' ? [ 4, 5, 6 ] : [ 91, 92, 93 ];
+				: this.category == 'Discrete Prompts' ? [ 4, 5, 6 ] : [ 91, 92, 93 ];
+		if (this.category == undefined) {
+			this.category = 'Features';
+		}
 	}
 	toggleEvent(event) {
 		if (event.target.checked) {
+			this.showSpinner = true;
 			this.questionId = event.target.value;
 			this.questionIdEvent.emit(this.questionId);
 		}
@@ -42,20 +46,20 @@ export class NgbdModalComponent {
 	@Input('category') category: string;
 	questionId: any;
 	subscription: Subscription;
+	modalRef: any;
 	constructor(private modalService: NgbModal, private data: DataService, private http: HttpClient) {}
 
 	open() {
-		const modalRef = this.modalService.open(NgbdModalContent, { windowClass: 'modal-class' });
-		modalRef.componentInstance.name = 'World';
-		modalRef.componentInstance.category = this.category;
-		modalRef.componentInstance.questionIdEvent.subscribe((value) => {
+		this.modalRef = this.modalService.open(NgbdModalContent);
+
+		this.modalRef.componentInstance.category = this.category;
+		this.modalRef.componentInstance.questionIdEvent.subscribe((value) => {
 			this.questionId = value;
 			this.numericPromptModal(this.watchId, this.questionId);
 		});
 	}
 
 	public numericPromptModal(watchid, questionid) {
-		console.log(watchid, questionid);
 		this.http
 			.get<any>(
 				'https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/apifordata?watchid=' +
@@ -64,6 +68,8 @@ export class NgbdModalComponent {
 					questionid
 			)
 			.subscribe((d) => {
+				this.modalRef.componentInstance.showSpinner = false;
+
 				this.data.sendData(d);
 			});
 	}
