@@ -79,7 +79,7 @@ export class GraphsComponent {
 			})
 		]);
 
-		// svg.append('path').data([ data.values ]).attr('class', 'line').attr('d', valueline);
+		svg.append('path').data([ data.values ]).attr('class', 'line').attr('d', valueline);
 
 		// Add the scatterplot
 		svg

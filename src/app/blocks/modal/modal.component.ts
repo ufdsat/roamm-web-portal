@@ -23,7 +23,7 @@ export class NgbdModalContent {
 		this.questionIdList =
 			this.category == 'Numeric Prompts'
 				? [ 1, 2, 3 ]
-				: this.category == 'Discrete Prompts' ? [ 4, 5, 6 ] : [ 91, 92, 93 ];
+				: this.category == 'Discrete Prompts' ? [ 4, 5, 6 ] : [ 91, 92, 93, 94, 95, 96 ];
 		if (this.category == undefined) {
 			this.category = 'Features';
 		}

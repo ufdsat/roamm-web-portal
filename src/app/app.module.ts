@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormControlDirective, FormGroupDirective, FormsModule } from '@angular/forms';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DiscretePromptComponent } from './blocks/discrete-prompt/discrete-prompt.component';
 import { NumericPromptComponent } from './blocks/numeric-prompt/numeric-prompt.component';
@@ -18,6 +18,7 @@ import { WatchStatusComponent } from './blocks/watch-status/watch-status.compone
 import { HomeComponent } from './blocks/home/home.component';
 import { NgbdModalComponentModule } from './blocks/modal/modal-component.module';
 import { GraphsComponent } from './blocks/graphs/graphs.component';
+import { AuthComponent } from './auth/auth.component';
 // import { SpinnerComponent } from './ui/spinner/spinner.component';
 // import { ChartComponent } from './blocks/charts/charts.component';
 // import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
@@ -34,7 +35,8 @@ import { GraphsComponent } from './blocks/graphs/graphs.component';
 		NavbarComponent,
 		ConfigureWatchComponent,
 		FeatureComponent,
-		WatchStatusComponent
+		WatchStatusComponent,
+		AuthComponent
 		// SpinnerComponent
 		// GraphsComponent
 		// ChartComponent
@@ -48,15 +50,16 @@ import { GraphsComponent } from './blocks/graphs/graphs.component';
 		NgbModule,
 		NgbdModalComponentModule,
 		HttpClientModule,
+		FormsModule,
 		RouterModule.forRoot([
 			{ path: '', component: HomeComponent },
 			{ path: 'Participant', component: ParticipantComponent },
 			{ path: 'ConfigureWatch', component: ConfigureWatchComponent },
-			{ path: 'WatchStatus', component: WatchStatusComponent }
-			// { path: 'Chart', component: ChartComponent }
+			{ path: 'WatchStatus', component: WatchStatusComponent },
+			{ path: 'auth', component: AuthComponent }
 		])
 	],
-	providers: [ NgbActiveModal ],
+	providers: [ NgbActiveModal, FormControlDirective, FormGroupDirective ],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}
