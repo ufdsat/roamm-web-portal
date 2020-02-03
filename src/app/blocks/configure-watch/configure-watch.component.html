@@ -6,42 +6,99 @@
   </div>
   <hr />
   <div class="row mt-4">
-    <div class="col-md-4 form-group">
-      <select class="form-control campaign-dropdown">
-        <option value="" [selected]="true" [disabled]="true"
-          >Please Select a Campaign</option
-        >
-        <option *ngFor="let c of campaigns" [value]="c">
-          {{ c }}
-        </option>
-      </select>
-    </div>
-    <div class="col-md-4 form-group">
-      <select class="form-control participant-dropdown">
-        <option value="" [selected]="true" [disabled]="true"
-          >Please Select a Participant</option
-        >
+    <div class="col-md-6">
+      <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+        <div class="form-group">
+          <select
+            class="form-control campaign-dropdown"
+            name="campaignid"
+            ngModel
+          >
+            <option value="" [selected]="true" [disabled]="true"
+              >Please Select a Campaign</option
+            >
+            <option *ngFor="let c of campaigns" [value]="c">
+              {{ c }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select
+            class="form-control participant-dropdown"
+            name="participantid"
+            ngModel
+          >
+            <option value="" [selected]="true" [disabled]="true"
+              >Please Select a Participant</option
+            >
 
-        <option *ngFor="let p of participants" [value]="p[0]">
-          {{ p[0] }}
-        </option>
-      </select>
-    </div>
-    <div class="col-md-4 form-group">
-      <input
-        type="text"
-        name="watchid"
-        id="watchid"
-        class="form-control"
-        placeholder="Please enter a Watch Id"
-      />
-    </div>
-  </div>
-  <div class="row mt-4">
-    <div class="col-sm-3">
-      <button class="btn btn-outline-primary" (click)="submit()">
-        Submit
-      </button>
+            <option *ngFor="let p of participants" [value]="p[0]">
+              {{ p[0] }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="watchid"
+            id="watchid"
+            class="form-control"
+            placeholder="Please enter a Watch Id"
+            ngModel
+          />
+        </div>
+        <div class="form-group">
+          <label for="starttime">Start Time</label>
+          <!-- <form class="form-inline"> -->
+          <div class="form-group">
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="starttime"
+                [(ngModel)]="starttime"
+                ngbDatepicker
+                #d1="ngbDatepicker"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-outline-secondary calendar"
+                  (click)="d1.toggle()"
+                  type="button"
+                ></button>
+              </div>
+            </div>
+          </div>
+          <!-- </form> -->
+        </div>
+        <div class="form-group">
+          <label for="endtime">End Time</label>
+          <!-- <form class="form-inline"> -->
+          <div class="form-group">
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="endtime"
+                [(ngModel)]="endtime"
+                ngbDatepicker
+                #d2="ngbDatepicker"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-outline-secondary calendar"
+                  (click)="d2.toggle()"
+                  type="button"
+                ></button>
+              </div>
+            </div>
+          </div>
+          <!-- </form> -->
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-outline-primary" type="submit">Submit</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
