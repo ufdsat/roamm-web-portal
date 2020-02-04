@@ -26,7 +26,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: "auth", component: AuthComponent },
-  { path: "sign-up", component: SignUpComponent }
+  { path: "3232cb6b61415092122d840c1f61664b", component: SignUpComponent }
 ];
 
 @NgModule({

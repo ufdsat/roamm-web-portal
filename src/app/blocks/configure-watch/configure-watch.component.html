@@ -1,12 +1,15 @@
 <div class="container">
+  <div class="alert alert-success" *ngIf="successMessage != ''">
+    {{ successMessage }}
+  </div>
   <div class="row mt-4">
-    <div class="col-sm-12">
+    <div class="col-md-6 offset-md-3">
       <h4 class="configure-watch-header">Configure Watch</h4>
     </div>
   </div>
   <hr />
   <div class="row mt-4">
-    <div class="col-md-6">
+    <div class="col-md-6 offset-md-3">
       <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
         <div class="form-group">
           <select
@@ -95,7 +98,7 @@
           </div>
           <!-- </form> -->
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <button class="btn btn-outline-primary" type="submit">Submit</button>
         </div>
       </form>

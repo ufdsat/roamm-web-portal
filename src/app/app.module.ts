@@ -25,6 +25,7 @@ import { NgbdModalComponentModule } from "./blocks/modal/modal-component.module"
 import { GraphsComponent } from "./blocks/graphs/graphs.component";
 import { AuthComponent } from "./auth/auth.component";
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoaderComponent } from './ui/loader/loader.component';
 // import { SpinnerComponent } from './ui/spinner/spinner.component';
 // import { ChartComponent } from './blocks/charts/charts.component';
 // import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
@@ -43,7 +44,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FeatureComponent,
     WatchStatusComponent,
     AuthComponent,
-    SignUpComponent
+    SignUpComponent,
+    LoaderComponent
     // SpinnerComponent
     // GraphsComponent
     // ChartComponent

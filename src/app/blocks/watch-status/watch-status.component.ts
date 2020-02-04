@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 import { NgbdModalComponentModule } from "../modal/modal-component.module";
 import { HttpClient } from "@angular/common/http";
 import { DataService } from "../data.service";
+import { AuthService } from "src/app/auth/auth.service";
+import { User } from "src/app/auth/user.model";
+import { BehaviorSubject } from "rxjs";
 // import { ModalComponent } from "../modal/modal.component";
 @Component({
   selector: "app-watch-status",
@@ -12,18 +15,25 @@ import { DataService } from "../data.service";
 export class WatchStatusComponent implements OnInit {
   watchData: any;
   watchstatus: any;
-  readonly ROOT_URL_CAMPAIGN =
-    "https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/watchstatus";
+  ROOT_URL_CAMPAIGN =
+    "https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/watchstatus?campaignmanagerid=";
+  public user: BehaviorSubject<any>;
+  public showSpinner: boolean = false;
   constructor(
     private fb: FormBuilder,
     private modalService: NgbModal,
     private http: HttpClient,
-    private data: DataService
+    private data: DataService,
+    private authService: AuthService
   ) {}
   ngOnInit() {
-    this.http.get<any>(this.ROOT_URL_CAMPAIGN).subscribe(data => {
+    this.showSpinner = true;
+    const user = this.authService.user.value;
+    console.log(this.ROOT_URL_CAMPAIGN + user.email);
+    this.http.get<any>(this.ROOT_URL_CAMPAIGN + user.email).subscribe(data => {
+      this.showSpinner = false;
       this.watchstatus = data.body;
-      console.log(this.watchstatus);
+      console.log(data);
     });
   }
 

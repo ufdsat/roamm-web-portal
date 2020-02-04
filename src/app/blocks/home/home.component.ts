@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { AuthService } from "src/app/auth/auth.service";
 
 @Component({
   selector: "app-home",
@@ -8,7 +9,8 @@ import { HttpClient } from "@angular/common/http";
 export class HomeComponent {
   readonly ROOT_URL =
     "https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign";
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient, private authService: AuthService) {}
   campaignid: any;
   discretePrompt: any;
   numericPrompt: any;
@@ -46,7 +48,9 @@ export class HomeComponent {
   //   );
 
   postData() {
+    const user = this.authService.user.value;
     const data = {
+      campaignManager: user.email,
       campaignid: this.campaignid,
       DiscreetPrompts: this.discretePrompt,
       NumericPrompts: this.numericPrompt,

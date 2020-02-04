@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
-    <table class="table">
+    <app-loader *ngIf="showSpinner"></app-loader>
+    <table class="table" *ngIf="!showSpinner">
       <thead>
         <tr>
           <th scope="col">Participant Id</th>
@@ -20,18 +21,21 @@
             <ngbd-modal-component
               [watchId]="item.watchid"
               [category]="'Numeric Prompts'"
+              [npQuestions]="item.campaign.NumericPrompts"
             ></ngbd-modal-component>
           </td>
           <td>
             <ngbd-modal-component
               [watchId]="item.watchid"
               [category]="'Features'"
+              [featureQuestions]="item.campaign.Features"
             ></ngbd-modal-component>
           </td>
           <td>
             <ngbd-modal-component
               [watchId]="item.watchid"
               [category]="'Discrete Prompts'"
+              [dpQuestions]="item.campaign.DiscreetPrompts"
             ></ngbd-modal-component>
           </td>
           <!-- 1 4 91 -->

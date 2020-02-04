@@ -18,6 +18,7 @@ export class SignUpComponent implements OnInit {
     if (!form.valid) {
       return;
     }
+
     const email = form.value.username;
     const password = form.value.password;
     this.authService.signup(email, password).subscribe(

@@ -4,6 +4,7 @@ import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DataService } from "../data.service";
 import { Subscription } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { ElementFinder } from "protractor";
 
 @Component({
   selector: "ngbd-modal-content",
@@ -16,6 +17,11 @@ export class NgbdModalContent {
   subscription: Subscription;
   showSpinner: boolean = false;
   questionIdList: any;
+  npQuestions: any;
+  dpQuestions: any;
+  featureQuestions: any;
+  dict: any = {};
+
   @Output() questionIdEvent = new EventEmitter<any>();
 
   constructor(
@@ -24,20 +30,42 @@ export class NgbdModalContent {
     private http: HttpClient
   ) {}
   ngOnInit() {
+    let numericPromptQuestions = [];
+
+    let discretePromptQuestions = [];
+
+    let featureQuestions = [];
+    console.log(this.dict);
+    if (this.category == "Numeric Prompts") {
+      numericPromptQuestions = this.getQuestionList(this.npQuestions);
+    } else if (this.category == "Discrete Prompts") {
+      discretePromptQuestions = this.getQuestionList(this.dpQuestions);
+    } else {
+      featureQuestions = this.getQuestionList(this.featureQuestions);
+    }
+
     this.questionIdList =
       this.category == "Numeric Prompts"
-        ? [1, 2, 3]
+        ? numericPromptQuestions
         : this.category == "Discrete Prompts"
-        ? [4, 5, 6]
-        : [91, 92, 93, 94, 95, 96];
+        ? discretePromptQuestions
+        : featureQuestions;
     if (this.category == undefined) {
       this.category = "Features";
     }
   }
+  getQuestionList(questions) {
+    let questionList = [];
+    for (var i = 0; i < questions.length; i++) {
+      questionList.push(questions[i].question);
+      this.dict[questions[i].question] = questions[i].questionid;
+    }
+    return questionList;
+  }
   toggleEvent(event) {
     if (event.target.checked) {
       this.showSpinner = true;
-      this.questionId = event.target.value;
+      this.questionId = this.dict[event.target.value];
       this.questionIdEvent.emit(this.questionId);
     }
   }
@@ -50,6 +78,9 @@ export class NgbdModalContent {
 export class NgbdModalComponent {
   @Input("watchId") watchId: string;
   @Input("category") category: string;
+  @Input("npQuestions") np: string;
+  @Input("dpQuestions") dp: string;
+  @Input("featureQuestions") featureQuestions: string;
   questionId: any;
   subscription: Subscription;
   modalRef: any;
@@ -63,6 +94,11 @@ export class NgbdModalComponent {
     this.modalRef = this.modalService.open(NgbdModalContent);
 
     this.modalRef.componentInstance.category = this.category;
+    this.modalRef.componentInstance.npQuestions = this.np;
+    this.modalRef.componentInstance.dpQuestions = this.dp;
+
+    this.modalRef.componentInstance.featureQuestions = this.featureQuestions;
+    console.log(this.np, this.dp, this.featureQuestions);
     this.modalRef.componentInstance.questionIdEvent.subscribe(value => {
       this.questionId = value;
       this.numericPromptModal(this.watchId, this.questionId);
