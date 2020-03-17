@@ -1,37 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~ng-pick-datetime/assets/style/picker.min.css";
 body {
-	font-family: "Source Sans Pro", sans-serif;
-	font-size: 18px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
 }
 input[type="checkbox"] {
-	margin-left: 20px;
-	margin-top: 10px;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 #feature-calculate {
-	margin-top: 45px;
-	margin-left: -30px;
+  margin-top: 45px;
+  margin-left: -30px;
 }
 .line {
-	fill: none;
-	stroke: steelblue;
-	stroke-width: 2px;
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
 }
 
 .modal-content {
-	width: 1000px !important;
-	left: 50%;
-	transform: translateX(-50%);
+  width: 1000px !important;
+  left: 50%;
+  transform: translateX(-50%);
 }
 div.tooltip-scatter {
-	position: absolute;
-	text-align: center;
-	padding: .5rem;
-	background: #ffffff;
-	color: #313639;
-	border: 1px solid #c8cdd1;
-	border-radius: 8px;
-	pointer-events: none;
-	font-size: 1rem;
-	z-index: 10000;
+  position: absolute;
+  text-align: center;
+  padding: 0.5rem;
+  background: #ffffff;
+  color: #313639;
+  border: 1px solid #c8cdd1;
+  border-radius: 8px;
+  pointer-events: none;
+  font-size: 1rem;
+  z-index: 10000;
+}
+.tabs {
+  margin-right: 50px;
 }

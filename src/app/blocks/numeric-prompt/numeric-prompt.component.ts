@@ -14,7 +14,7 @@ export class NumericPromptComponent implements OnInit {
     const numericPrompt = this.fb.group({
       question: [],
       type: [{ value: "range", disabled: true }],
-      longUIquestion: [],
+      longUIquestion: ["range"],
       min: [],
       max: [],
       inc: [],

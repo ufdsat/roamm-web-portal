@@ -1,5 +1,20 @@
 <div class="container">
-  <div class="row form-group mt-3">
+  <!-- Start previous next navigation -->
+  <div class="row mt-4 mb-4">
+    <div class="tabs" *ngFor="let tab of tabs; let i = index">
+      <button
+        class="btn"
+        [ngClass]="{
+          'btn-primary': i == count,
+          'btn-outline-primary': i != count
+        }"
+        (click)="tabsNavigation(i)"
+      >
+        {{ tab }}
+      </button>
+    </div>
+  </div>
+  <div class="row form-group mt-3 tabs" *ngIf="count == 0">
     <label for="campaignId" class="offset-sm-2 col-sm-2 col-form-label"
       >Campaign Id</label
     >
@@ -15,29 +30,57 @@
       />
     </div>
   </div>
-  <hr />
+
   <app-discrete-prompt
     (messageEvent)="receiveDiscretePrompt($event)"
+    *ngIf="count == 2"
   ></app-discrete-prompt>
-  <hr />
   <app-numeric-prompt
     (messageEvent)="receiveNumericPrompt($event)"
+    *ngIf="count == 1"
   ></app-numeric-prompt>
-  <hr />
-  <app-cognitive (messageEvent)="receiveCognitive($event)"></app-cognitive>
-  <hr />
-  <app-watch (messageEvent)="receiveWatch($event)"></app-watch>
-  <hr />
-  <app-feature (messageEvent)="receiveFeature($event)"></app-feature>
-  <hr />
-  <div class="row mb-5">
+  <app-cognitive
+    (messageEvent)="receiveCognitive($event)"
+    *ngIf="count == 3"
+  ></app-cognitive>
+  <app-watch
+    (messageEvent)="receiveWatch($event)"
+    *ngIf="count == 4"
+  ></app-watch>
+  <app-feature
+    (messageEvent)="receiveFeature($event)"
+    *ngIf="count == 5"
+  ></app-feature>
+  <div class="row mb-5 tabs" *ngIf="count == 6">
     <div class="col-sm-12 offset-sm-2">
+      <p>Do you want to submit? If yes, click on Submit!</p>
       <button
         type="submit"
         class="btn btn-outline-primary"
         (click)="postData()"
       >
         Submit
+      </button>
+    </div>
+  </div>
+  <hr />
+  <div class="row mb-5">
+    <div class="col-md-2">
+      <button
+        class="btn btn-outline-primary"
+        (click)="previous()"
+        [disabled]="count == 0"
+      >
+        Previous
+      </button>
+    </div>
+    <div class="col-md-2 offset-md-8">
+      <button
+        class="btn btn-outline-primary"
+        (click)="next()"
+        [disabled]="count == tabs.length - 1"
+      >
+        Next
       </button>
     </div>
   </div>

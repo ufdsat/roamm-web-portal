@@ -7,6 +7,11 @@ import { AuthComponent } from "./auth/auth.component";
 import { ParticipantComponent } from "./blocks/participant/participant.component";
 import { AuthGuard } from "./auth/auth.guard";
 import { SignUpComponent } from "./sign-up/sign-up.component";
+import { NumericPromptComponent } from "./blocks/numeric-prompt/numeric-prompt.component";
+import { DiscretePromptComponent } from "./blocks/discrete-prompt/discrete-prompt.component";
+import { WatchComponent } from "./blocks/watch/watch.component";
+import { FeatureComponent } from "./blocks/feature/feature.component";
+import { CognitiveComponent } from "./blocks/cognitive/cognitive.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent, canActivate: [AuthGuard] },
@@ -23,6 +28,34 @@ const routes: Routes = [
   {
     path: "WatchStatus",
     component: WatchStatusComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "NumericPrompt",
+    component: NumericPromptComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: "DiscretePrompt",
+    component: DiscretePromptComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "Watch",
+    component: WatchComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: "Feature",
+    component: FeatureComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: "Cognitive",
+    component: CognitiveComponent,
     canActivate: [AuthGuard]
   },
   { path: "auth", component: AuthComponent },
