@@ -6,22 +6,44 @@ import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 })
 export class NumericPromptComponent implements OnInit {
   numericForm: FormGroup;
+  items: any = [];
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
+    var items = localStorage.getItem("numeric_form");
+    if (items) {
+      this.items = JSON.parse(items);
+      // this.populateDiscrete(this.items);
+    }
     this.numericForm = this.fb.group({
       numericPrompts: this.fb.array([])
     });
     const numericPrompt = this.fb.group({
       question: [],
       type: [{ value: "range", disabled: true }],
-      longUIquestion: ["range"],
+      longUIquestion: [],
       min: [],
       max: [],
       inc: [],
       default: []
       // time: []
     });
-    this.numericPromptForms.push(numericPrompt);
+    if (items) {
+      for (var i = 0; i < this.items.length; i++) {
+        const numericPromptItem = this.fb.group({
+          question: [this.items[i].question],
+          type: [{ value: "range", disabled: true }],
+          longUIquestion: [this.items[i].longUIquestion],
+          min: [this.items[i].min],
+          max: [this.items[i].max],
+          inc: [this.items[i].inc],
+          default: [this.items[i].default]
+        });
+        // discretePromptItem.controls.values.setValue(this.fb.array(temp));
+        this.numericPromptForms.push(numericPromptItem);
+      }
+    } else {
+      this.numericPromptForms.push(numericPrompt);
+    }
   }
   get numericPromptForms() {
     return this.numericForm.get("numericPrompts") as FormArray;
@@ -50,6 +72,10 @@ export class NumericPromptComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<any>();
 
   submit() {
+    localStorage.setItem(
+      "numeric_form",
+      JSON.stringify(this.numericPromptForms.value)
+    );
     this.messageEvent.emit(this.numericPromptForms.value);
   }
 }

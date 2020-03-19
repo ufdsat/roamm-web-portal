@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit() {
     localStorage.removeItem("discrete_form");
+    localStorage.removeItem("numeric_form");
+    localStorage.removeItem("cognitive_form");
+    localStorage.removeItem("watch_form");
+    localStorage.removeItem("feature_form");
   }
   tabsNavigation(tab) {
     this.count = tab;
