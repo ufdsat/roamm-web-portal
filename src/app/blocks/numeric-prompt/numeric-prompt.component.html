@@ -115,7 +115,7 @@
           />
         </div>
       </div> -->
-      <div class="row">
+      <div class="row" *ngIf="disableInput == false">
         <div class="col-sm-2">
           <button
             class="btn btn-outline-danger delete-numeric mb-3"
@@ -126,7 +126,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="disableInput == false">
       <div class="col-sm-2">
         <button
           class="btn btn-outline-success add-numeric"

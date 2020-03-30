@@ -25,8 +25,8 @@
         id="campaignId"
         name="campaignid"
         placeholder="Please enter the Campaign Id"
+        [value]="itemValue != undefined ? itemValue : ''"
         (change)="add($event)"
-        (click)="add($event)"
       />
     </div>
   </div>
@@ -52,15 +52,39 @@
     *ngIf="count == 5"
   ></app-feature>
   <div class="row mb-5 tabs" *ngIf="count == 6">
-    <div class="col-sm-12 offset-sm-2">
-      <p>Do you want to submit? If yes, click on Submit!</p>
-      <button
-        type="submit"
-        class="btn btn-outline-primary"
-        (click)="postData()"
-      >
-        Submit
-      </button>
+    <div class="col-sm-12">
+      <div class="row form-group mt-3 tabs">
+        <label for="campaignId" class="offset-sm-2 col-sm-2 col-form-label"
+          >Campaign Id</label
+        >
+        <div class="col-sm-4">
+          <input
+            type="text"
+            class="form-control"
+            id="campaignId"
+            name="campaignid"
+            [disabled]="true"
+            [value]="itemValue != undefined ? itemValue : ''"
+          />
+        </div>
+      </div>
+      <app-discrete-prompt [disableInput]="true"></app-discrete-prompt>
+      <app-numeric-prompt [disableInput]="true"></app-numeric-prompt>
+      <app-cognitive [disableInput]="true"></app-cognitive>
+      <app-watch [disableInput]="true"></app-watch>
+      <app-feature [disableInput]="true"></app-feature>
+      <hr />
+      <div class="offset-md-2">
+        <p>Do you want to submit? If yes, click on Submit!</p>
+
+        <button
+          type="submit"
+          class="btn btn-outline-primary"
+          (click)="postData()"
+        >
+          Submit
+        </button>
+      </div>
     </div>
   </div>
   <hr />

@@ -3,7 +3,8 @@ import {
   OnInit,
   Output,
   EventEmitter,
-  createPlatformFactory
+  createPlatformFactory,
+  Input
 } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 
@@ -12,10 +13,14 @@ import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
   templateUrl: "./feature.component.html"
 })
 export class FeatureComponent implements OnInit {
+  @Input() disableInput: boolean = false;
   featureForm: FormGroup;
   items: any = [];
   featureValue: any = [];
-  constructor(private fb: FormBuilder) {}
+  options: any = [];
+  constructor(private fb: FormBuilder) {
+    this.options = ["mvm", "svdm", "mangle", "sdangle", "df", "fpdf", "p625"];
+  }
   ngOnInit() {
     var items = localStorage.getItem("feature_form");
     if (items) {
@@ -24,7 +29,7 @@ export class FeatureComponent implements OnInit {
     }
 
     if (items) {
-      console.log(items);
+      // console.log(items);
       for (var i = 0; i < this.items.length; i++) {
         console.log(this.items[i].question);
         this.featureValue.push(
@@ -41,6 +46,9 @@ export class FeatureComponent implements OnInit {
       this.featureForm = this.fb.group({
         features: this.fb.array([this.addFeatureGroup()])
       });
+    }
+    if (this.disableInput == true) {
+      this.featureForm.disable();
     }
   }
   addFeatureGroup(): FormGroup {

@@ -1,10 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 @Component({
   selector: "app-numeric-prompt",
   templateUrl: "./numeric-prompt.component.html"
 })
 export class NumericPromptComponent implements OnInit {
+  @Input() disableInput: boolean = false;
   numericForm: FormGroup;
   items: any = [];
   constructor(private fb: FormBuilder) {}
@@ -43,6 +44,9 @@ export class NumericPromptComponent implements OnInit {
       }
     } else {
       this.numericPromptForms.push(numericPrompt);
+    }
+    if (this.disableInput == true) {
+      this.numericForm.disable();
     }
   }
   get numericPromptForms() {

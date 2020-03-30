@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  createPlatformFactory
-} from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 
 @Component({
@@ -12,6 +6,7 @@ import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
   templateUrl: "./watch.component.html"
 })
 export class WatchComponent implements OnInit {
+  @Input() disableInput: boolean = false;
   // time = { hour: 13, minute: 30 };
   watchForm: FormGroup;
   featuresQuestion: any;
@@ -113,6 +108,9 @@ export class WatchComponent implements OnInit {
       }
     } else {
       this.watchForms.push(watch);
+    }
+    if (this.disableInput == true) {
+      this.watchForm.disable();
     }
   }
   timeArr(): FormGroup {

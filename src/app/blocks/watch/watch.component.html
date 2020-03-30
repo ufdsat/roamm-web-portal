@@ -67,7 +67,7 @@
                   <ngb-timepicker formControlName="time"></ngb-timepicker>
                 </div>
 
-                <div class="form-group col-sm-3">
+                <div class="form-group col-sm-3" *ngIf="disableInput == false">
                   <button
                     class="btn btn-outline-danger mt-4"
                     (click)="deleteValue(i, iy)"
@@ -79,7 +79,10 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-2 offset-sm-2 form-group">
+        <div
+          class="col-sm-2 offset-sm-2 form-group"
+          *ngIf="disableInput == false"
+        >
           <button class="btn btn-outline-primary" (click)="addValue(i)">
             Add Time
           </button>

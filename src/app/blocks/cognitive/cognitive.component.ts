@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from "@angular/core";
+import { Component, Output, EventEmitter, OnInit, Input } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 
 @Component({
@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
   templateUrl: "./cognitive.component.html"
 })
 export class CognitiveComponent implements OnInit {
+  @Input() disableInput: boolean = false;
   cognitiveForm: FormGroup;
   items: any = [];
   constructor(private fb: FormBuilder) {}
@@ -39,6 +40,9 @@ export class CognitiveComponent implements OnInit {
       }
     } else {
       this.cognitiveForms.push(cognitive);
+    }
+    if (this.disableInput == true) {
+      this.cognitiveForm.disable();
     }
   }
   get cognitiveForms() {

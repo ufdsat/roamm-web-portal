@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   feature: any;
   count: number = 0;
   tabs: any = [];
+  itemValue: any;
   constructor(private http: HttpClient, private authService: AuthService) {
     this.tabs = [
       "Campaign ID",
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
       "Cognitive",
       "Watch",
       "Feature",
-      "Submit"
+      "Review & Submit"
     ];
   }
   ngOnInit() {
@@ -34,6 +35,7 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem("cognitive_form");
     localStorage.removeItem("watch_form");
     localStorage.removeItem("feature_form");
+    localStorage.removeItem("campaignId");
   }
   tabsNavigation(tab) {
     this.count = tab;
@@ -51,6 +53,15 @@ export class HomeComponent implements OnInit {
 
   add(event) {
     this.campaignid = event.target.value;
+    localStorage.setItem("campaignId", JSON.stringify(this.campaignid));
+    if (
+      this.itemValue == null ||
+      this.itemValue == undefined ||
+      this.itemValue
+    ) {
+      this.itemValue = JSON.parse(localStorage.getItem("campaignId"));
+      console.log(this.itemValue);
+    }
   }
   receiveDiscretePrompt($event) {
     this.discretePrompt = $event;
@@ -100,13 +111,24 @@ export class HomeComponent implements OnInit {
       WatchConfigurationParameters: this.watch,
       Features: this.feature
     };
-    const result = { item: data };
-    console.log(result);
-    console.log(JSON.stringify(result, null, 2));
-    // this.http.post(this.ROOT_URL, data);
-    this.http.post(this.ROOT_URL, result).subscribe(data => {
-      console.log(data, "subscribe");
-    });
+    console.log(data);
+    // const user = this.authService.user.value;
+    // const data = {
+    //   campaignManager: user.email,
+    //   campaignid: this.campaignid,
+    //   DiscreetPrompts: this.discretePrompt,
+    //   NumericPrompts: this.numericPrompt,
+    //   CognitiveParameters: this.cognitive,
+    //   WatchConfigurationParameters: this.watch,
+    //   Features: this.feature
+    // };
+    // const result = { item: data };
+    // console.log(result);
+    // console.log(JSON.stringify(result, null, 2));
+    // // this.http.post(this.ROOT_URL, data);
+    // this.http.post(this.ROOT_URL, result).subscribe(data => {
+    //   console.log(data, "subscribe");
+    // });
   }
 }
 // }

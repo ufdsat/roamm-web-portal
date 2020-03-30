@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 
 @Component({
@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
   templateUrl: "./discrete-prompt.component.html"
 })
 export class DiscretePromptComponent implements OnInit {
+  @Input() disableInput: boolean = false;
   discreteForm: FormGroup;
   items: any = [];
   constructor(private fb: FormBuilder) {}
@@ -49,6 +50,9 @@ export class DiscretePromptComponent implements OnInit {
       }
     } else {
       this.discretePromptForms.push(discretePrompt);
+    }
+    if (this.disableInput == true) {
+      this.discreteForm.disable();
     }
   }
 
