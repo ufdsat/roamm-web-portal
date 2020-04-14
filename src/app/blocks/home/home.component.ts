@@ -4,7 +4,7 @@ import { AuthService } from "src/app/auth/auth.service";
 
 @Component({
   selector: "app-home",
-  templateUrl: "./home.component.html"
+  templateUrl: "./home.component.html",
 })
 export class HomeComponent implements OnInit {
   readonly ROOT_URL =
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
       "Cognitive",
       "Watch",
       "Feature",
-      "Review & Submit"
+      "Review & Submit",
     ];
   }
   ngOnInit() {
@@ -39,16 +39,6 @@ export class HomeComponent implements OnInit {
   }
   tabsNavigation(tab) {
     this.count = tab;
-
-    // console.log(event.target.classList);
-    // event.target.classList.toggle("btn-primary");
-    // if (event.target.classList.contains("btn-outline-primary")) {
-    //   event.target.classList.remove("btn-outline-primary");
-    //   event.target.classList.add("btn-primary"); // To ADD
-    // } else if (event.target.classList.contains("btn-primary")) {
-    //   event.target.classList.remove("btn-primary");
-    //   event.target.classList.add("btn-outline-primary"); // To ADD
-    // }
   }
 
   add(event) {
@@ -92,14 +82,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // submit() {
-  //   console.log(
-  //     this.discretePrompt,
-  //     this.numericPrompt,
-  //     this.cognitive,
-  //     this.watch
-  //   );
-
   postData() {
     const user = this.authService.user.value;
     const data = {
@@ -109,26 +91,11 @@ export class HomeComponent implements OnInit {
       NumericPrompts: this.numericPrompt,
       CognitiveParameters: this.cognitive,
       WatchConfigurationParameters: this.watch,
-      Features: this.feature
+      Features: this.feature,
     };
-    console.log(data);
-    // const user = this.authService.user.value;
-    // const data = {
-    //   campaignManager: user.email,
-    //   campaignid: this.campaignid,
-    //   DiscreetPrompts: this.discretePrompt,
-    //   NumericPrompts: this.numericPrompt,
-    //   CognitiveParameters: this.cognitive,
-    //   WatchConfigurationParameters: this.watch,
-    //   Features: this.feature
-    // };
-    // const result = { item: data };
-    // console.log(result);
-    // console.log(JSON.stringify(result, null, 2));
-    // // this.http.post(this.ROOT_URL, data);
-    // this.http.post(this.ROOT_URL, result).subscribe(data => {
-    //   console.log(data, "subscribe");
-    // });
+    const result = { item: data };
+    this.http.post(this.ROOT_URL, result).subscribe((data) => {
+      console.log(data, "subscribe");
+    });
   }
 }
-// }

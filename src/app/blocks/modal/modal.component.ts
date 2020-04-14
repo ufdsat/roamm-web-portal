@@ -8,7 +8,7 @@ import { ElementFinder } from "protractor";
 
 @Component({
   selector: "ngbd-modal-content",
-  templateUrl: "./modal-content.component.html"
+  templateUrl: "./modal-content.component.html",
 })
 export class NgbdModalContent {
   @Input() name;
@@ -73,10 +73,12 @@ export class NgbdModalContent {
 
 @Component({
   selector: "ngbd-modal-component",
-  templateUrl: "./modal.component.html"
+  templateUrl: "./modal.component.html",
 })
 export class NgbdModalComponent {
   @Input("watchId") watchId: string;
+  @Input("starttime") starttime: string;
+  @Input("endtime") endtime: string;
   @Input("category") category: string;
   @Input("npQuestions") np: string;
   @Input("dpQuestions") dp: string;
@@ -98,22 +100,41 @@ export class NgbdModalComponent {
     this.modalRef.componentInstance.dpQuestions = this.dp;
 
     this.modalRef.componentInstance.featureQuestions = this.featureQuestions;
-    console.log(this.np, this.dp, this.featureQuestions);
-    this.modalRef.componentInstance.questionIdEvent.subscribe(value => {
+    this.modalRef.componentInstance.questionIdEvent.subscribe((value) => {
       this.questionId = value;
-      this.numericPromptModal(this.watchId, this.questionId);
+      this.numericPromptModal(
+        this.watchId,
+        this.questionId,
+        this.starttime,
+        this.endtime
+      );
     });
   }
 
-  public numericPromptModal(watchid, questionid) {
+  public numericPromptModal(watchid, questionid, starttime, endtime) {
+    console.log(
+      "https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/apifordata?watchid=" +
+        watchid +
+        "%2B" +
+        questionid +
+        "%2B" +
+        starttime +
+        "%2B" +
+        endtime
+    );
     this.http
       .get<any>(
         "https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/apifordata?watchid=" +
           watchid +
-          "+" +
-          questionid
+          "%2B" +
+          questionid +
+          "%2B" +
+          starttime +
+          "%2B" +
+          endtime
       )
-      .subscribe(d => {
+      .subscribe((d) => {
+        console.log("after starttime and endtime", d);
         this.modalRef.componentInstance.showSpinner = false;
 
         this.data.sendData(d);
