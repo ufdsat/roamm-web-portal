@@ -14,56 +14,60 @@ import { FeatureComponent } from "./blocks/feature/feature.component";
 import { CognitiveComponent } from "./blocks/cognitive/cognitive.component";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: "create-campaign",
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: "Participant",
     component: ParticipantComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: "ConfigureWatch",
     component: ConfigureWatchComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
-    path: "WatchStatus",
+    path: "",
     component: WatchStatusComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: "NumericPrompt",
     component: NumericPromptComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
 
   {
     path: "DiscretePrompt",
     component: DiscretePromptComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: "Watch",
     component: WatchComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
 
   {
     path: "Feature",
     component: FeatureComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
 
   {
     path: "Cognitive",
     component: CognitiveComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   { path: "auth", component: AuthComponent },
-  { path: "3232cb6b61415092122d840c1f61664b", component: SignUpComponent }
+  { path: "3232cb6b61415092122d840c1f61664b", component: SignUpComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

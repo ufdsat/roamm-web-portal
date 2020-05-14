@@ -6,11 +6,11 @@
     >
       <div class="row mt-3 mb-4">
         <div class="col-sm-12">
-          <h4 class="discrete-prompt-header">Watch</h4>
+          <h4 class="discrete-prompt-header">Sampling Rates</h4>
         </div>
       </div>
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="send-to-server" class="col-sm-2 form-check-label"
           >Send to Server</label
         >
@@ -21,10 +21,9 @@
             id="send-to-server"
             formControlName="SEND_TO_SERVER"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
-      <!-- <div class="form-group row">
+      </div> -->
+      <div class="form-group row">
         <label for="location-rate" class="col-sm-2 form-check-label"
           >Location Rate</label
         >
@@ -37,8 +36,8 @@
             formControlName="location_rate"
           />
         </div>
-      </div> -->
-      <!-- <div class="form-group row">
+      </div>
+      <div class="form-group row">
         <label for="pressure-rate" class="col-sm-2 form-check-label"
           >Pressure Rate</label
         >
@@ -51,9 +50,9 @@
             formControlName="pressure_rate"
           />
         </div>
-      </div> -->
+      </div>
 
-      <!-- <div class="row" formArrayName="Prompts_time">
+      <div class="row" formArrayName="Prompts_time">
         <label class="col-sm-2 col-form-label">Prompts Time</label>
         <div class="col-sm-10">
           <div
@@ -88,9 +87,24 @@
             Add Time
           </button>
         </div>
-      </div> -->
+      </div>
+      <!-- <div class="form-group row">
+        <label for="prompts-time" class="col-sm-2 form-check-label"
+          >Prompts Time</label
+        >
+        <ngb-timepicker formControlName="Prompts_time"></ngb-timepicker> -->
+      <!-- <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            id="prompts-time"
+            placeholder=""
+            formControlName="Prompts_time"
+          />
+        </div> -->
+      <!-- </div> -->
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label
           for="receive-config-from-server"
           class="col-sm-2 form-check-label"
@@ -103,11 +117,10 @@
             id="receive-config-from-server"
             formControlName="RECEIVE_CONFIG_FROM_SERVER"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="prompt-start" class="col-sm-2 form-check-label"
           >Prompt Start</label
         >
@@ -120,9 +133,9 @@
             formControlName="prompt_start"
           />
         </div>
-      </div> -->
+      </div>
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="raw-mode" class="col-sm-2 form-check-label">Raw Mode</label>
         <div class="col-sm-6">
           <input
@@ -131,11 +144,10 @@
             id="raw-mode"
             formControlName="RAW_MODE"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="location-active" class="col-sm-2 form-check-label"
           >Location Active</label
         >
@@ -146,11 +158,10 @@
             id="location-active"
             formControlName="location_active"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="battery-active" class="col-sm-2 form-check-label"
           >Battery Active</label
         >
@@ -161,11 +172,10 @@
             id="battery-active"
             formControlName="battery_active"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="save-locally" class="col-sm-2 form-check-label"
           >Save Locally</label
         >
@@ -176,11 +186,10 @@
             id="save-locall"
             formControlName="SAVE_LOCALLY"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="step-rate" class="col-sm-2 form-check-label"
           >Step Rate</label
         >
@@ -193,9 +202,9 @@
             formControlName="step_rate"
           />
         </div>
-      </div> -->
+      </div>
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="uv-active" class="col-sm-2 form-check-label"
           >UV Active</label
         >
@@ -206,11 +215,10 @@
             id="uv-active"
             formControlName="UV_active"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="uv-rate" class="col-sm-2 form-check-label">UV Rate</label>
         <div class="col-sm-6">
           <input
@@ -221,9 +229,9 @@
             formControlName="UV_rate"
           />
         </div>
-      </div> -->
+      </div>
 
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="collection-frequency" class="col-sm-2 form-check-label"
           >Collection Frequency</label
         >
@@ -236,9 +244,9 @@
             formControlName="COLLECTION_FREQUENCY"
           />
         </div>
-      </div> -->
+      </div>
 
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="one-eighty-over-pi" class="col-sm-2 form-check-label"
           >One Eighty Over PI</label
         >
@@ -251,9 +259,9 @@
             formControlName="ONE_EIGHTY_OVER_PI"
           />
         </div>
-      </div> -->
+      </div>
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="gyro-active" class="col-sm-2 form-check-label"
           >Gyro Active</label
         >
@@ -264,11 +272,10 @@
             id="gyro-active"
             formControlName="gyro_active"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="gyro-rate" class="col-sm-2 form-check-label"
           >Gyro Rate</label
         >
@@ -281,9 +288,9 @@
             formControlName="gyro_rate"
           />
         </div>
-      </div> -->
+      </div>
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="heart-rate-active" class="col-sm-2 form-check-label"
           >Heart Rate Active</label
         >
@@ -294,11 +301,10 @@
             id="heart-rate-active"
             formControlName="heartrate_active"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="export-rate" class="col-sm-2 form-check-label"
           >Export Rate</label
         >
@@ -311,8 +317,8 @@
             formControlName="export_rate"
           />
         </div>
-      </div> -->
-      <!-- <div class="form-group row">
+      </div>
+      <div class="form-group row">
         <label for="battery-rate" class="col-sm-2 form-check-label"
           >Battery Rate</label
         >
@@ -325,9 +331,9 @@
             formControlName="battery_rate"
           />
         </div>
-      </div> -->
+      </div>
 
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="sampling-rate" class="col-sm-2 form-check-label"
           >Sampling Rate</label
         >
@@ -340,9 +346,9 @@
             formControlName="SAMPLING_RATE"
           />
         </div>
-      </div> -->
+      </div>
 
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="prompt-rate" class="col-sm-2 form-check-label"
           >Prompt Rate</label
         >
@@ -355,9 +361,9 @@
             formControlName="prompt_rate"
           />
         </div>
-      </div> -->
+      </div>
 
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="prompt-end" class="col-sm-2 form-check-label"
           >Prompt End</label
         >
@@ -370,8 +376,8 @@
             formControlName="prompt_end"
           />
         </div>
-      </div> -->
-      <!-- <div class="form-group row">
+      </div>
+      <div class="form-group row">
         <label for="accel-rate" class="col-sm-2 form-check-label"
           >Accel Rate</label
         >
@@ -384,8 +390,8 @@
             formControlName="accel_rate"
           />
         </div>
-      </div> -->
-      <!-- <div class="form-group row">
+      </div>
+      <div class="form-group row">
         <label for="heart-rate" class="col-sm-2 form-check-label"
           >Heart Rate</label
         >
@@ -398,9 +404,9 @@
             formControlName="heartrate_rate"
           />
         </div>
-      </div> -->
+      </div>
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="accel-active" class="col-sm-2 form-check-label"
           >Accel Active</label
         >
@@ -411,11 +417,10 @@
             id="accel-active"
             formControlName="accel_active"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="pressure-active" class="col-sm-2 form-check-label"
           >Pressure Active</label
         >
@@ -426,11 +431,10 @@
             id="pressure-active"
             formControlName="pressure_active"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="viable-construction-rate" class="col-sm-2 form-check-label"
           >Viable Construction Rate</label
         >
@@ -444,9 +448,9 @@
             value="1000 * 15"
           />
         </div>
-      </div> -->
+      </div>
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="step-active" class="col-sm-2 form-check-label"
           >Step Active</label
         >
@@ -457,9 +461,8 @@
             id="step-active"
             formControlName="step_active"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </form>

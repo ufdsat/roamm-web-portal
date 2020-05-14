@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 @Component({
   selector: "app-numeric-prompt",
-  templateUrl: "./numeric-prompt.component.html"
+  templateUrl: "./numeric-prompt.component.html",
 })
 export class NumericPromptComponent implements OnInit {
   @Input() disableInput: boolean = false;
@@ -16,7 +16,7 @@ export class NumericPromptComponent implements OnInit {
       // this.populateDiscrete(this.items);
     }
     this.numericForm = this.fb.group({
-      numericPrompts: this.fb.array([])
+      numericPrompts: this.fb.array([]),
     });
     const numericPrompt = this.fb.group({
       question: [],
@@ -25,7 +25,7 @@ export class NumericPromptComponent implements OnInit {
       min: [],
       max: [],
       inc: [],
-      default: []
+      default: [],
       // time: []
     });
     if (items) {
@@ -37,7 +37,7 @@ export class NumericPromptComponent implements OnInit {
           min: [this.items[i].min],
           max: [this.items[i].max],
           inc: [this.items[i].inc],
-          default: [this.items[i].default]
+          default: [this.items[i].default],
         });
         // discretePromptItem.controls.values.setValue(this.fb.array(temp));
         this.numericPromptForms.push(numericPromptItem);
@@ -56,13 +56,13 @@ export class NumericPromptComponent implements OnInit {
   addNumericPrompt() {
     const numericPrompt = this.fb.group({
       question: [],
-      type: [],
+      type: [{ value: "range", disabled: true }],
       longUIquestion: [],
       min: [],
       max: [],
       inc: [],
       default: [],
-      time: []
+      time: [],
     });
     this.numericPromptForms.push(numericPrompt);
   }

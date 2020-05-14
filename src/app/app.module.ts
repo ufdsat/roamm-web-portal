@@ -26,6 +26,7 @@ import { GraphsComponent } from "./blocks/graphs/graphs.component";
 import { AuthComponent } from "./auth/auth.component";
 import { SignUpComponent } from "./sign-up/sign-up.component";
 import { LoaderComponent } from "./ui/loader/loader.component";
+import { SamplingRatesComponent } from './sampling-rates/sampling-rates.component';
 // import { SpinnerComponent } from './ui/spinner/spinner.component';
 // import { ChartComponent } from './blocks/charts/charts.component';
 // import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
@@ -45,7 +46,8 @@ import { LoaderComponent } from "./ui/loader/loader.component";
     WatchStatusComponent,
     AuthComponent,
     SignUpComponent,
-    LoaderComponent
+    LoaderComponent,
+    SamplingRatesComponent
     // SpinnerComponent
     // GraphsComponent
     // ChartComponent
