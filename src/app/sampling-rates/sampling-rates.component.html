@@ -32,12 +32,12 @@
             type="number"
             class="form-control"
             id="location-rate"
-            placeholder=""
+            placeholder="The time interval for accessing GPS location"
             formControlName="location_rate"
           />
         </div>
       </div>
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="pressure-rate" class="col-sm-2 form-check-label"
           >Pressure Rate</label
         >
@@ -50,7 +50,7 @@
             formControlName="pressure_rate"
           />
         </div>
-      </div>
+      </div> -->
 
       <div class="row" formArrayName="Prompts_time">
         <label class="col-sm-2 col-form-label">Prompts Time</label>
@@ -120,7 +120,7 @@
         </div>
       </div> -->
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="prompt-start" class="col-sm-2 form-check-label"
           >Prompt Start</label
         >
@@ -133,7 +133,7 @@
             formControlName="prompt_start"
           />
         </div>
-      </div>
+      </div> -->
 
       <!-- <div class="row form-group">
         <label for="raw-mode" class="col-sm-2 form-check-label">Raw Mode</label>
@@ -189,7 +189,7 @@
         </div>
       </div> -->
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="step-rate" class="col-sm-2 form-check-label"
           >Step Rate</label
         >
@@ -202,7 +202,7 @@
             formControlName="step_rate"
           />
         </div>
-      </div>
+      </div> -->
 
       <!-- <div class="row form-group">
         <label for="uv-active" class="col-sm-2 form-check-label"
@@ -218,7 +218,7 @@
         </div>
       </div> -->
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="uv-rate" class="col-sm-2 form-check-label">UV Rate</label>
         <div class="col-sm-6">
           <input
@@ -229,7 +229,7 @@
             formControlName="UV_rate"
           />
         </div>
-      </div>
+      </div> -->
 
       <div class="form-group row">
         <label for="collection-frequency" class="col-sm-2 form-check-label"
@@ -240,13 +240,13 @@
             type="text"
             class="form-control"
             id="collection-frequency"
-            placeholder=""
+            placeholder="The frequency at which raw data is collected"
             formControlName="COLLECTION_FREQUENCY"
           />
         </div>
       </div>
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="one-eighty-over-pi" class="col-sm-2 form-check-label"
           >One Eighty Over PI</label
         >
@@ -259,7 +259,7 @@
             formControlName="ONE_EIGHTY_OVER_PI"
           />
         </div>
-      </div>
+      </div> -->
 
       <!-- <div class="row form-group">
         <label for="gyro-active" class="col-sm-2 form-check-label"
@@ -275,7 +275,7 @@
         </div>
       </div> -->
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="gyro-rate" class="col-sm-2 form-check-label"
           >Gyro Rate</label
         >
@@ -288,7 +288,7 @@
             formControlName="gyro_rate"
           />
         </div>
-      </div>
+      </div> -->
 
       <!-- <div class="row form-group">
         <label for="heart-rate-active" class="col-sm-2 form-check-label"
@@ -313,7 +313,7 @@
             type="number"
             class="form-control"
             id="export-rate"
-            placeholder=""
+            placeholder="The time interval for sending data to server"
             formControlName="export_rate"
           />
         </div>
@@ -327,7 +327,7 @@
             type="number"
             class="form-control"
             id="battery-rate"
-            placeholder=""
+            placeholder="The time interval for checking battery status"
             formControlName="battery_rate"
           />
         </div>
@@ -348,7 +348,7 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="prompt-rate" class="col-sm-2 form-check-label"
           >Prompt Rate</label
         >
@@ -361,9 +361,9 @@
             formControlName="prompt_rate"
           />
         </div>
-      </div>
+      </div> -->
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="prompt-end" class="col-sm-2 form-check-label"
           >Prompt End</label
         >
@@ -376,17 +376,17 @@
             formControlName="prompt_end"
           />
         </div>
-      </div>
+      </div> -->
       <div class="form-group row">
         <label for="accel-rate" class="col-sm-2 form-check-label"
-          >Accel Rate</label
+          >Accelerometer Rate</label
         >
         <div class="col-sm-6">
           <input
             type="number"
             class="form-control"
             id="accel-rate"
-            placeholder=""
+            placeholder="Sampling rate at which accelerometer data is collected"
             formControlName="accel_rate"
           />
         </div>
@@ -400,7 +400,7 @@
             type="number"
             class="form-control"
             id="heart-rate"
-            placeholder=""
+            placeholder="Sampling rate at which heart rate is collected"
             formControlName="heartrate_rate"
           />
         </div>
@@ -436,14 +436,14 @@
 
       <div class="form-group row">
         <label for="viable-construction-rate" class="col-sm-2 form-check-label"
-          >Viable Construction Rate</label
+          >Variable Construction Rate</label
         >
         <div class="col-sm-6">
           <input
             type="text"
             class="form-control"
             id="viable-construction-rate"
-            placeholder=""
+            placeholder="The interval at which raw data is aggregated to construct features"
             formControlName="VIABLE_CONSTRUCTION_RATE"
             value="1000 * 15"
           />

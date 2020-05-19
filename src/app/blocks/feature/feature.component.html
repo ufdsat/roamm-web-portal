@@ -1,63 +1,134 @@
-<form
-  class="feature-form"
-  [formGroup]="featureForm"
-  (click)="submit()"
-  (change)="submit()"
->
-  <div class="row mb-3">
-    <div class="col-sm-10 offset-sm-2">
-      <h4 class="feature-header">Features</h4>
-    </div>
-  </div>
-  <div class="row" formArrayName="features">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-10">
-      <div *ngFor="let feature of FeatureArray.controls; let i = index">
-        <div [formGroupName]="i">
-          <div class="form-row">
-            <div class="form-group col-sm-5">
-              <label for="feature-question">Question</label>
-              <select
-                formControlName="question"
-                class="form-control"
-                id="feature-question"
-              >
-                <!-- <option value="" [selected]="true" [disabled]="true"
-                  >Please Select</option
-                > -->
-                <option *ngFor="let option of options" [value]="option">{{
-                  option
-                }}</option>
-              </select>
-            </div>
-            <div class="col-md-2">
-              <label for="feature-calculate" class="form-check-label"
-                >Calculate</label
-              >
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="feature-calculate"
-                placeholder=""
-                formControlName="calculate"
-              />
-            </div>
-            <div class="form-group col-sm-3 mt-4" *ngIf="disableInput == false">
-              <button
-                class="btn btn-outline-danger"
-                (click)="removeFeatures(i)"
-              >
-                Delete Feature
-              </button>
-            </div>
-          </div>
+<form [formGroup]="featureForm" (change)="submit()" (click)="submit()">
+  <div
+    class="feature-form offset-md-2"
+    id="feature-form"
+    formArrayName="features"
+  >
+    <div
+      *ngFor="let watch of featureForms.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div class="row mt-3 mb-4">
+        <div class="col-sm-12">
+          <h4 class="discrete-prompt-header">Features</h4>
         </div>
       </div>
-    </div>
-    <div class="col-sm-2 offset-sm-2 form-group" *ngIf="disableInput == false">
-      <button class="btn btn-outline-primary" (click)="addFeatures()">
-        Add Feature
-      </button>
+
+      <div class="row form-group">
+        <label for="mvm" class="col-sm-2 form-check-label">mvm</label>
+        <div class="col-sm-10">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="mvm"
+            formControlName="mvm"
+            [(ngModel)]="default_checkbox_values.mvm"
+          />
+          <span class="checkbox-placeholder"
+            >Mean of vector magnitude. Sample mean of the VM.
+          </span>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="svdm" class="col-sm-2 form-check-label">svdm</label>
+        <div class="col-sm-10">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="svdm"
+            formControlName="svdm"
+            [(ngModel)]="default_checkbox_values.svdm"
+          />
+          <span class="checkbox-placeholder"
+            >SD of vector magnitude. Standard deviation of VM.</span
+          >
+        </div>
+      </div>
+      <div class="row form-group">
+        <label for="mangle" class="col-sm-2 form-check-label">mangle</label>
+        <div class="col-sm-10">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="mangle"
+            formControlName="mangle"
+            [(ngModel)]="default_checkbox_values.mangle"
+          />
+          <span class="checkbox-placeholder"
+            >Mean angle of acceleration relative to vertical on the device.
+            Sample mean of the angle between x axis and VM.
+          </span>
+        </div>
+      </div>
+      <div class="row form-group">
+        <label for="sdangle" class="col-sm-2 form-check-label">sdangle</label>
+        <div class="col-sm-10">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="sdangle"
+            formControlName="sdangle"
+            [(ngModel)]="default_checkbox_values.sdangle"
+          />
+          <span class="checkbox-placeholder"
+            >SD of the angle of acceleration relative to vertical on the device.
+            Sample standard deviation of the angles.</span
+          >
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="df" class="col-sm-2 form-check-label">df</label>
+        <div class="col-sm-10">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="df"
+            formControlName="df"
+            [(ngModel)]="default_checkbox_values.df"
+          />
+          <span class="checkbox-placeholder"
+            >Dominant frequency of vm. Frequency corresponding to the largest
+            modulus.</span
+          >
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="fpdf" class="col-sm-2 form-check-label">fpdf</label>
+        <div class="col-sm-10">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="fpdf"
+            formControlName="fpdf"
+            [(ngModel)]="default_checkbox_values.fpdf"
+          />
+          <span class="checkbox-placeholder"
+            >Fraction of power in vm at dominant frequency. Modulus of the
+            dominant frequency/sum of moduli at each frequency.</span
+          >
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label for="p625" class="col-sm-2 form-check-label">p625</label>
+        <div class="col-sm-10">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="p625"
+            formControlName="p625"
+            [(ngModel)]="default_checkbox_values.p625"
+          />
+          <span class="checkbox-placeholder"
+            >Percentage of the power of the vm that is in 0.6-2.5 Hz. Sum of
+            moduli corresponding to frequency in this range divided by sum of
+            moduli of all frequencies.</span
+          >
+        </div>
+      </div>
     </div>
   </div>
 </form>

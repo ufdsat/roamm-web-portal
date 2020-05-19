@@ -50,8 +50,15 @@
             id="question"
             placeholder="A short form of question to be displayed on watch"
             formControlName="question"
+            maxlength="17"
           />
         </div>
+      </div>
+      <div
+        class="col-sm-6 offset-sm-2 alert alert-danger"
+        *ngIf="numericPrompt.get('question').value?.length >= 17"
+      >
+        Maximum length of question should be 17 characters
       </div>
       <div class="form-group row">
         <label for="min" class="col-sm-2 col-form-label">Minimum Value</label>

@@ -6,7 +6,7 @@
     >
       <div class="row mt-3 mb-4">
         <div class="col-sm-12">
-          <h4 class="discrete-prompt-header">Watch</h4>
+          <h4 class="discrete-prompt-header">Sensor Settings</h4>
         </div>
       </div>
 
@@ -20,10 +20,14 @@
             class="form-check-input"
             id="send-to-server"
             formControlName="SEND_TO_SERVER"
+            [(ngModel)]="default_checkbox_values.sendToServer"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
+          <span class="checkbox-placeholder"
+            >When true sends data to server</span
+          >
         </div>
       </div>
+
       <!-- <div class="form-group row">
         <label for="location-rate" class="col-sm-2 form-check-label"
           >Location Rate</label
@@ -102,8 +106,11 @@
             class="form-check-input"
             id="receive-config-from-server"
             formControlName="RECEIVE_CONFIG_FROM_SERVER"
+            [(ngModel)]="default_checkbox_values.receiveConfigFromServer"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
+          <span class="checkbox-placeholder"
+            >When true receives config from server</span
+          >
         </div>
       </div>
 
@@ -131,7 +138,9 @@
             id="raw-mode"
             formControlName="RAW_MODE"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
+          <span class="checkbox-placeholder"
+            >When true collects and stores raw data</span
+          >
         </div>
       </div>
 
@@ -145,8 +154,9 @@
             class="form-check-input"
             id="location-active"
             formControlName="location_active"
+            [(ngModel)]="default_checkbox_values.locationActive"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
+          <span class="checkbox-placeholder">When true collects GPS data</span>
         </div>
       </div>
 
@@ -160,8 +170,11 @@
             class="form-check-input"
             id="battery-active"
             formControlName="battery_active"
+            [(ngModel)]="default_checkbox_values.batteryActive"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
+          <span class="checkbox-placeholder"
+            >When true collects battery status</span
+          >
         </div>
       </div>
 
@@ -176,7 +189,9 @@
             id="save-locall"
             formControlName="SAVE_LOCALLY"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
+          <span class="checkbox-placeholder"
+            >When true stores data within the watch</span
+          >
         </div>
       </div>
 
@@ -195,7 +210,7 @@
         </div>
       </div> -->
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="uv-active" class="col-sm-2 form-check-label"
           >UV Active</label
         >
@@ -208,7 +223,7 @@
           />
           <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
       <!-- <div class="form-group row">
         <label for="uv-rate" class="col-sm-2 form-check-label">UV Rate</label>
@@ -253,7 +268,7 @@
         </div>
       </div> -->
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="gyro-active" class="col-sm-2 form-check-label"
           >Gyro Active</label
         >
@@ -266,7 +281,7 @@
           />
           <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
       <!-- <div class="form-group row">
         <label for="gyro-rate" class="col-sm-2 form-check-label"
@@ -294,7 +309,9 @@
             id="heart-rate-active"
             formControlName="heartrate_active"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
+          <span class="checkbox-placeholder"
+            >When true collects heart rate data</span
+          >
         </div>
       </div>
 
@@ -410,12 +427,15 @@
             class="form-check-input"
             id="accel-active"
             formControlName="accel_active"
+            [(ngModel)]="default_checkbox_values.accelActive"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
+          <span class="checkbox-placeholder"
+            >When true collects accelerometer data</span
+          >
         </div>
       </div>
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="pressure-active" class="col-sm-2 form-check-label"
           >Pressure Active</label
         >
@@ -428,7 +448,7 @@
           />
           <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
 
       <!-- <div class="form-group row">
         <label for="viable-construction-rate" class="col-sm-2 form-check-label"
@@ -446,7 +466,7 @@
         </div>
       </div> -->
 
-      <div class="row form-group">
+      <!-- <div class="row form-group">
         <label for="step-active" class="col-sm-2 form-check-label"
           >Step Active</label
         >
@@ -459,7 +479,7 @@
           />
           <span class="checkbox-placeholder">Send to Server</span>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </form>

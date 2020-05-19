@@ -19,20 +19,22 @@ export class HomeComponent implements OnInit {
   count: number = 0;
   tabs: any = [];
   itemValue: any;
+  submit_success: boolean = false;
   constructor(private http: HttpClient, private authService: AuthService) {
     this.tabs = [
       "Campaign ID",
       "Numeric Prompt",
       "Discrete Prompt",
       "Cognitive",
-      "Watch",
+      "Sensor Settings",
       "Sampling Rates",
-      "Feature",
+      "Features",
       "Review",
       "Submit",
     ];
   }
   ngOnInit() {
+    this.submit_success = false;
     localStorage.removeItem("discrete_form");
     localStorage.removeItem("numeric_form");
     localStorage.removeItem("cognitive_form");
@@ -104,6 +106,7 @@ export class HomeComponent implements OnInit {
     const result = { item: data };
     this.http.post(this.ROOT_URL, result).subscribe((data) => {
       console.log(data, "subscribe");
+      this.submit_success = true;
     });
   }
 }

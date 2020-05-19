@@ -8,6 +8,8 @@ export class NumericPromptComponent implements OnInit {
   @Input() disableInput: boolean = false;
   numericForm: FormGroup;
   items: any = [];
+  count: number = 1;
+
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
     var items = localStorage.getItem("numeric_form");
