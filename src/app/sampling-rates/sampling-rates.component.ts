@@ -25,7 +25,7 @@ export class SamplingRatesComponent implements OnInit {
     const watch = this.fb.group({
       location_rate: [],
       Prompts_time: this.fb.array([this.timeArr()]),
-      COLLECTION_FREQUENCY: [],
+      // COLLECTION_FREQUENCY: [],
       ONE_EIGHTY_OVER_PI: [{ value: "180/3.14", disabled: true }],
       export_rate: [],
       battery_rate: [],
@@ -62,7 +62,7 @@ export class SamplingRatesComponent implements OnInit {
           // step_rate: [this.items[i].step_rate],
           // UV_active: [this.items[i].UV_active],
           // UV_rate: [this.items[i].UV_rate],
-          COLLECTION_FREQUENCY: [this.items[i].COLLECTION_FREQUENCY],
+          // COLLECTION_FREQUENCY: [this.items[i].COLLECTION_FREQUENCY],
           ONE_EIGHTY_OVER_PI: [{ value: "180/3.14", disabled: true }],
           // gyro_active: [this.items[i].gyro_active],
           // gyro_rate: [this.items[i].gyro_rate],
@@ -77,7 +77,7 @@ export class SamplingRatesComponent implements OnInit {
           // accel_active: [this.items[i].accel_active],
           // pressure_active: [this.items[i].pressure_active],
           VIABLE_CONSTRUCTION_RATE: [
-            this.items[i].quesVIABLE_CONSTRUCTION_RATEtion,
+            this.items[i].quesVIABLE_CONSTRUCTION_RATE,
           ],
           // step_active: [this.items[i].step_active],
         });
@@ -138,7 +138,7 @@ export class SamplingRatesComponent implements OnInit {
       // step_rate: [],
       // UV_active: [],
       // UV_rate: [],
-      COLLECTION_FREQUENCY: [],
+      // COLLECTION_FREQUENCY: [],
       ONE_EIGHTY_OVER_PI: [{ value: "180/3.14", disabled: true }],
       // gyro_active: [],
       // gyro_rate: [],

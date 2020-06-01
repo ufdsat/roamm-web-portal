@@ -34,6 +34,7 @@
             id="location-rate"
             placeholder="The time interval for accessing GPS location"
             formControlName="location_rate"
+            [value]="600000"
           />
         </div>
       </div>
@@ -231,7 +232,7 @@
         </div>
       </div> -->
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="collection-frequency" class="col-sm-2 form-check-label"
           >Collection Frequency</label
         >
@@ -244,7 +245,7 @@
             formControlName="COLLECTION_FREQUENCY"
           />
         </div>
-      </div>
+      </div> -->
 
       <!-- <div class="form-group row">
         <label for="one-eighty-over-pi" class="col-sm-2 form-check-label"
@@ -329,6 +330,7 @@
             id="battery-rate"
             placeholder="The time interval for checking battery status"
             formControlName="battery_rate"
+            [value]="500000"
           />
         </div>
       </div>
@@ -344,6 +346,7 @@
             id="sampling-rate"
             placeholder=""
             formControlName="SAMPLING_RATE"
+            [value]="100"
           />
         </div>
       </div>
@@ -402,6 +405,7 @@
             id="heart-rate"
             placeholder="Sampling rate at which heart rate is collected"
             formControlName="heartrate_rate"
+            [value]="600000"
           />
         </div>
       </div>
@@ -445,7 +449,7 @@
             id="viable-construction-rate"
             placeholder="The interval at which raw data is aggregated to construct features"
             formControlName="VIABLE_CONSTRUCTION_RATE"
-            value="1000 * 15"
+            [value]="15000"
           />
         </div>
       </div>

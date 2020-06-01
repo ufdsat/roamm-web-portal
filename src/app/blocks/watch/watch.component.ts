@@ -14,9 +14,14 @@ export class WatchComponent implements OnInit {
   default_checkbox_values: any = {
     sendToServer: true,
     receiveConfigFromServer: true,
-    locationActive: true,
+    locationActive: false,
     batteryActive: true,
     accelActive: true,
+    saveLocally: false,
+    rawMode: false,
+    gyroActive: false,
+    heartrateActive: false,
+    pressureActive: false,
   };
   default_value_checkbox: boolean = true;
   constructor(private fb: FormBuilder) {}
@@ -31,15 +36,19 @@ export class WatchComponent implements OnInit {
     });
 
     const watch = this.fb.group({
-      SEND_TO_SERVER: [],
-      RECEIVE_CONFIG_FROM_SERVER: [],
-      RAW_MODE: [],
-      location_active: [],
-      battery_active: [],
-      SAVE_LOCALLY: [],
-
-      heartrate_active: [],
-      accel_active: [],
+      SEND_TO_SERVER: [this.default_checkbox_values.sendToServer],
+      RECEIVE_CONFIG_FROM_SERVER: [
+        this.default_checkbox_values.receiveConfigFromServer,
+      ],
+      RAW_MODE: [this.default_checkbox_values.rawMode],
+      location_active: [this.default_checkbox_values.locationActive],
+      battery_active: [this.default_checkbox_values.batteryActive],
+      SAVE_LOCALLY: [this.default_checkbox_values.saveLocally],
+      // UV_active: [this.default_checkbox_values..UV_active],
+      gyro_active: [this.default_checkbox_values.gyroActive],
+      heartrate_active: [this.default_checkbox_values.heartrateActive],
+      accel_active: [this.default_checkbox_values.accelActive],
+      pressure_active: [this.default_checkbox_values.pressureActive],
     });
     if (items) {
       for (var i = 0; i < this.items.length; i++) {
@@ -60,11 +69,11 @@ export class WatchComponent implements OnInit {
           location_active: [this.items[i].location_active],
           battery_active: [this.items[i].battery_active],
           SAVE_LOCALLY: [this.items[i].SAVE_LOCALLY],
-          // UV_active: [this.items[i].UV_active],
-          // gyro_active: [this.items[i].gyro_active],
+          // UV_active: [this.items[i]..UV_active],
+          gyro_active: [this.items[i].gyro_active],
           heartrate_active: [this.items[i].heartrate_active],
           accel_active: [this.items[i].accel_active],
-          // pressure_active: [this.items[i].pressure_active],
+          pressure_active: [this.items[i].pressure_active],
           // step_active: [this.items[i].step_active],
         });
         // discretePromptItem.controls.values.setValue(this.fb.array(temp));
@@ -76,6 +85,7 @@ export class WatchComponent implements OnInit {
     if (this.disableInput == true) {
       this.watchForm.disable();
     }
+    this.submit();
   }
   timeArr(): FormGroup {
     return this.fb.group({
@@ -116,11 +126,12 @@ export class WatchComponent implements OnInit {
       battery_active: [],
       SAVE_LOCALLY: [],
       // UV_active: [],
-      // gyro_active: [],
+      gyro_active: [],
       heartrate_active: [],
       accel_active: [],
       // pressure_active: [],
       // step_active: [],
+      pressure_active: [],
     });
 
     this.watchForms.push(watch);

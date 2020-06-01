@@ -93,7 +93,7 @@ export class DiscretePromptComponent implements OnInit {
   addDiscretePrompt() {
     const discretePrompt = this.fb.group({
       question: [],
-      type: [{ value: "discreet", disabled: true }],
+      type: [{ value: "discrete", disabled: true }],
       longUIquestion: [],
       time: [],
       values: this.fb.array([this.valuesArr()]),

@@ -1,140 +1,144 @@
 <div class="container-fluid">
-  <div *ngIf="!submit_success">
-    <!-- Start previous next navigation -->
-    <div class="row mt-4 mb-4 text-center">
-      <div class="tabs" *ngFor="let tab of tabs; let i = index">
-        <button
-          class="btn"
-          [ngClass]="{
-            'btn-primary': i == count,
-            'btn-outline-primary': i != count
-          }"
-          (click)="tabsNavigation(i)"
-        >
-          {{ tab }}
-        </button>
-      </div>
-    </div>
-    <div class="row form-group mt-3 tabs" *ngIf="count == 0">
-      <label for="campaignId" class="offset-sm-2 col-sm-2 col-form-label"
-        >Campaign Id</label
+  <!-- Start previous next navigation -->
+  <div class="row mt-4 mb-4 text-center">
+    <div class="tabs" *ngFor="let tab of tabs; let i = index">
+      <button
+        class="btn"
+        [ngClass]="{
+          'btn-primary': i == count,
+          'btn-outline-primary': i != count
+        }"
+        (click)="tabsNavigation(i)"
       >
-      <div class="col-sm-4">
-        <input
-          type="text"
-          class="form-control"
-          id="campaignId"
-          name="campaignid"
-          placeholder="Please enter the Campaign Id"
-          [value]="itemValue != undefined ? itemValue : ''"
-          (change)="add($event)"
-        />
+        {{ tab }}
+      </button>
+    </div>
+  </div>
+  <div class="row form-group mt-3 tabs" *ngIf="count == 0">
+    <label for="campaignId" class="offset-sm-2 col-sm-2 col-form-label"
+      >Campaign Id</label
+    >
+    <div class="col-sm-4">
+      <input
+        type="text"
+        class="form-control"
+        id="campaignId"
+        name="campaignid"
+        placeholder="Please enter the Campaign Id"
+        [value]="itemValue != undefined ? itemValue : ''"
+        (input)="validateCampaignId($event.target.value)"
+      />
+      <div class="alert alert-danger mt-3" *ngIf="campaignExists">
+        Campaign Id already exists
       </div>
     </div>
+  </div>
 
-    <app-discrete-prompt
-      (messageEvent)="receiveDiscretePrompt($event)"
-      *ngIf="count == 2"
-    ></app-discrete-prompt>
-    <app-numeric-prompt
-      (messageEvent)="receiveNumericPrompt($event)"
-      *ngIf="count == 1"
-    ></app-numeric-prompt>
-    <app-cognitive
-      (messageEvent)="receiveCognitive($event)"
-      *ngIf="count == 3"
-    ></app-cognitive>
-    <app-watch
-      (messageEvent)="receiveWatch($event)"
-      *ngIf="count == 4"
-    ></app-watch>
-    <app-sampling-rates
-      (messageEvent)="receiveSamplingRate($event)"
-      *ngIf="count == 5"
-    ></app-sampling-rates>
-    <app-feature
-      (messageEvent)="receiveFeature($event)"
-      *ngIf="count == 6"
-    ></app-feature>
-    <div class="row mb-5 tabs" *ngIf="count == 7">
-      <div class="col-sm-12">
-        <div class="row form-group mt-3 tabs">
-          <label
-            for="campaignId"
-            class="col-sm-2 col-form-label"
-            style="margin-left: 180px;"
-            >Campaign Id</label
-          >
-          <div class="col-sm-4">
-            <input
-              type="text"
-              class="form-control"
-              id="campaignId"
-              name="campaignid"
-              [disabled]="true"
-              [value]="itemValue != undefined ? itemValue : ''"
-            />
-          </div>
-        </div>
-        <app-discrete-prompt [disableInput]="true"></app-discrete-prompt>
-        <hr />
-        <app-numeric-prompt [disableInput]="true"></app-numeric-prompt>
-        <hr />
-        <!-- <app-cognitive [disableInput]="true"></app-cognitive> -->
-        <app-sampling-rates [disableInput]="true"></app-sampling-rates>
-        <hr />
-        <app-watch [disableInput]="true"></app-watch>
-        <hr />
-        <app-feature [disableInput]="true"></app-feature>
-      </div>
-    </div>
-    <div class="row mb-5 mt-5 tabs" *ngIf="count == 8">
-      <div class="col-sm-12">
-        <div class="offset-md-2">
-          <p>Do you want to submit? If yes, click on Submit!</p>
-
-          <button
-            type="submit"
-            class="btn btn-outline-primary"
-            (click)="postData()"
-          >
-            Submit
-          </button>
+  <app-discrete-prompt
+    (messageEvent)="receiveDiscretePrompt($event)"
+    *ngIf="count == 2"
+  ></app-discrete-prompt>
+  <app-numeric-prompt
+    (messageEvent)="receiveNumericPrompt($event)"
+    *ngIf="count == 1"
+  ></app-numeric-prompt>
+  <app-cognitive
+    (messageEvent)="receiveCognitive($event)"
+    *ngIf="count == 3"
+  ></app-cognitive>
+  <app-watch
+    (messageEvent)="receiveWatch($event)"
+    *ngIf="count == 4"
+  ></app-watch>
+  <app-sampling-rates
+    (messageEvent)="receiveSamplingRate($event)"
+    *ngIf="count == 5"
+  ></app-sampling-rates>
+  <app-feature
+    (messageEvent)="receiveFeature($event)"
+    *ngIf="count == 6"
+  ></app-feature>
+  <div class="row mb-5 tabs" *ngIf="count == 7">
+    <div class="col-sm-12">
+      <div class="row form-group mt-3 tabs">
+        <label
+          for="campaignId"
+          class="col-sm-2 col-form-label"
+          style="margin-left: 180px;"
+          >Campaign Id</label
+        >
+        <div class="col-sm-4">
+          <input
+            type="text"
+            class="form-control"
+            id="campaignId"
+            name="campaignid"
+            [disabled]="true"
+            [value]="itemValue != undefined ? itemValue : ''"
+          />
         </div>
       </div>
+      <app-discrete-prompt [disableInput]="true"></app-discrete-prompt>
+      <hr />
+      <app-numeric-prompt [disableInput]="true"></app-numeric-prompt>
+      <hr />
+      <!-- <app-cognitive [disableInput]="true"></app-cognitive> -->
+      <app-sampling-rates [disableInput]="true"></app-sampling-rates>
+      <hr />
+      <app-watch [disableInput]="true"></app-watch>
+      <hr />
+      <app-feature [disableInput]="true"></app-feature>
     </div>
-    <hr />
-    <div class="row mb-5 footer-tabs">
-      <div class="col-md-2">
+  </div>
+  <div class="row mb-5 mt-5 tabs" *ngIf="count == 8">
+    <div class="col-sm-12">
+      <div class="offset-md-2">
+        <div class="alert alert-danger col-md-6" *ngIf="!submit_success">
+          Please fix the errors
+        </div>
+        <p>Do you want to submit? If yes, click on Submit!</p>
+
         <button
+          type="submit"
           class="btn btn-outline-primary"
-          (click)="previous()"
-          [disabled]="count == 0"
+          (click)="postData()"
         >
-          Previous
-        </button>
-      </div>
-      <div class="col-md-2 offset-md-8">
-        <button
-          class="btn btn-outline-primary"
-          (click)="next()"
-          [disabled]="count == tabs.length - 1"
-        >
-          Next
+          Submit
         </button>
       </div>
     </div>
   </div>
-  <div class="row mt-5" *ngIf="submit_success">
-    <div class="col-md-6 offset-md-3">
-      <div class="alert alert-success">
-        Form is submitted successfully!
-      </div>
-      <div>
-        <a [routerLink]="['/']" (click)="submit_success = false"
-          >Visit Watch Status <span class="sr-only">(current)</span></a
-        >
-      </div>
+  <hr />
+  <div class="row mb-5 footer-tabs">
+    <div class="col-md-2">
+      <button
+        class="btn btn-outline-primary"
+        (click)="previous()"
+        [disabled]="count == 0"
+      >
+        Previous
+      </button>
+    </div>
+    <div class="col-md-2 offset-md-8">
+      <button
+        class="btn btn-outline-primary"
+        (click)="next()"
+        [disabled]="count == tabs.length - 1"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row mt-5" *ngIf="success">
+  <div class="col-md-6 offset-md-3">
+    <div class="alert alert-success">
+      Form is submitted successfully!
+    </div>
+    <div>
+      <a [routerLink]="['/']" (click)="success = false"
+        >Visit Watch Status <span class="sr-only">(current)</span></a
+      >
     </div>
   </div>
 </div>

@@ -22,7 +22,6 @@
             class="form-check-input"
             id="mvm"
             formControlName="mvm"
-            [(ngModel)]="default_checkbox_values.mvm"
           />
           <span class="checkbox-placeholder"
             >Mean of vector magnitude. Sample mean of the VM.
@@ -38,7 +37,6 @@
             class="form-check-input"
             id="svdm"
             formControlName="svdm"
-            [(ngModel)]="default_checkbox_values.svdm"
           />
           <span class="checkbox-placeholder"
             >SD of vector magnitude. Standard deviation of VM.</span
@@ -53,7 +51,6 @@
             class="form-check-input"
             id="mangle"
             formControlName="mangle"
-            [(ngModel)]="default_checkbox_values.mangle"
           />
           <span class="checkbox-placeholder"
             >Mean angle of acceleration relative to vertical on the device.
@@ -69,7 +66,6 @@
             class="form-check-input"
             id="sdangle"
             formControlName="sdangle"
-            [(ngModel)]="default_checkbox_values.sdangle"
           />
           <span class="checkbox-placeholder"
             >SD of the angle of acceleration relative to vertical on the device.
@@ -86,7 +82,6 @@
             class="form-check-input"
             id="df"
             formControlName="df"
-            [(ngModel)]="default_checkbox_values.df"
           />
           <span class="checkbox-placeholder"
             >Dominant frequency of vm. Frequency corresponding to the largest
@@ -103,7 +98,6 @@
             class="form-check-input"
             id="fpdf"
             formControlName="fpdf"
-            [(ngModel)]="default_checkbox_values.fpdf"
           />
           <span class="checkbox-placeholder"
             >Fraction of power in vm at dominant frequency. Modulus of the
@@ -120,13 +114,24 @@
             class="form-check-input"
             id="p625"
             formControlName="p625"
-            [(ngModel)]="default_checkbox_values.p625"
           />
           <span class="checkbox-placeholder"
             >Percentage of the power of the vm that is in 0.6-2.5 Hz. Sum of
             moduli corresponding to frequency in this range divided by sum of
             moduli of all frequencies.</span
           >
+        </div>
+      </div>
+      <div class="row form-group">
+        <label for="gps" class="col-sm-2 form-check-label">GPS</label>
+        <div class="col-sm-10">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="gps"
+            formControlName="gps"
+          />
+          <span class="checkbox-placeholder">Collect location information</span>
         </div>
       </div>
     </div>

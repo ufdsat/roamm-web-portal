@@ -19,7 +19,13 @@ export class HomeComponent implements OnInit {
   count: number = 0;
   tabs: any = [];
   itemValue: any;
+  showSpinner: boolean = false;
   submit_success: boolean = false;
+  campaignIdValue: any;
+  campaignValues: any;
+  campaignExists: boolean = false;
+  success: boolean = false;
+  user: any;
   constructor(private http: HttpClient, private authService: AuthService) {
     this.tabs = [
       "Campaign ID",
@@ -35,28 +41,73 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit() {
     this.submit_success = false;
+    this.showSpinner = false;
     localStorage.removeItem("discrete_form");
     localStorage.removeItem("numeric_form");
     localStorage.removeItem("cognitive_form");
     localStorage.removeItem("watch_form");
-    localStorage.removeItem("sampling_rate_form");
+    localStorage.removeItem("sampling_rates_form");
     localStorage.removeItem("feature_form");
     localStorage.removeItem("campaignId");
+    this.authService.user.subscribe((user) => {
+      console.log(!user, !!user);
+      this.user = user;
+      // console.log(user);
+    });
+    this.http
+      .get<any>(
+        "https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/getcampaign?campaignmanagerid=" +
+          this.user.email
+      )
+      .subscribe((result) => {
+        console.log(result);
+        this.campaignValues = result.campaigns;
+      });
   }
   tabsNavigation(tab) {
     this.count = tab;
   }
 
-  add(event) {
-    this.campaignid = event.target.value;
-    localStorage.setItem("campaignId", JSON.stringify(this.campaignid));
-    if (
-      this.itemValue == null ||
-      this.itemValue == undefined ||
-      this.itemValue
-    ) {
+  // add(event) {
+  // console.log("changed");
+  // this.campaignid = event.target.value;
+  // localStorage.setItem("campaignId", JSON.stringify(this.campaignid));
+  // if (
+  //   this.itemValue == null ||
+  //   this.itemValue == undefined ||
+  //   this.itemValue
+  // ) {
+  //   this.itemValue = JSON.parse(localStorage.getItem("campaignId"));
+  //   console.log(this.itemValue);
+  //   this.http
+  //     .get<any>(
+  //       "https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/getcampaign?campaignmanagerid=cm1@roamm.com"
+  //     )
+  //     .subscribe((result) => {
+  //       console.log(result);
+  //     });
+  // }
+  // this.http
+  //   .get<any>(
+  //     "https://dhfytq5t67.execute-api.us-east-2.amazonaws.com/campaign/getcampaign?campaignmanagerid=cm1@roamm.com"
+  //   )
+  //   .subscribe((result) => {
+  //     console.log(result);
+  //     this.showSpinner = false;
+  //   });
+  // }
+  validateCampaignId(value: string): void {
+    console.log(value);
+    localStorage.setItem("campaignId", JSON.stringify(value));
+
+    if (this.campaignValues.some((item) => item == value)) {
+      this.campaignExists = true;
+      this.submit_success = false;
+    } else {
+      this.campaignExists = false;
+      this.campaignid = value.trim();
+      this.submit_success = true;
       this.itemValue = JSON.parse(localStorage.getItem("campaignId"));
-      console.log(this.itemValue);
     }
   }
   receiveDiscretePrompt($event) {
@@ -104,9 +155,11 @@ export class HomeComponent implements OnInit {
       Features: this.feature,
     };
     const result = { item: data };
+    console.log(result);
+
     this.http.post(this.ROOT_URL, result).subscribe((data) => {
       console.log(data, "subscribe");
-      this.submit_success = true;
+      this.success = true;
     });
   }
 }

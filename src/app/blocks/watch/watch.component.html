@@ -20,7 +20,6 @@
             class="form-check-input"
             id="send-to-server"
             formControlName="SEND_TO_SERVER"
-            [(ngModel)]="default_checkbox_values.sendToServer"
           />
           <span class="checkbox-placeholder"
             >When true sends data to server</span
@@ -106,7 +105,6 @@
             class="form-check-input"
             id="receive-config-from-server"
             formControlName="RECEIVE_CONFIG_FROM_SERVER"
-            [(ngModel)]="default_checkbox_values.receiveConfigFromServer"
           />
           <span class="checkbox-placeholder"
             >When true receives config from server</span
@@ -154,7 +152,6 @@
             class="form-check-input"
             id="location-active"
             formControlName="location_active"
-            [(ngModel)]="default_checkbox_values.locationActive"
           />
           <span class="checkbox-placeholder">When true collects GPS data</span>
         </div>
@@ -170,7 +167,6 @@
             class="form-check-input"
             id="battery-active"
             formControlName="battery_active"
-            [(ngModel)]="default_checkbox_values.batteryActive"
           />
           <span class="checkbox-placeholder"
             >When true collects battery status</span
@@ -268,7 +264,7 @@
         </div>
       </div> -->
 
-      <!-- <div class="row form-group">
+      <div class="row form-group">
         <label for="gyro-active" class="col-sm-2 form-check-label"
           >Gyro Active</label
         >
@@ -279,9 +275,11 @@
             id="gyro-active"
             formControlName="gyro_active"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
+          <span class="checkbox-placeholder"
+            >When true activates Gyroscope</span
+          >
         </div>
-      </div> -->
+      </div>
 
       <!-- <div class="form-group row">
         <label for="gyro-rate" class="col-sm-2 form-check-label"
@@ -427,7 +425,6 @@
             class="form-check-input"
             id="accel-active"
             formControlName="accel_active"
-            [(ngModel)]="default_checkbox_values.accelActive"
           />
           <span class="checkbox-placeholder"
             >When true collects accelerometer data</span
@@ -435,7 +432,7 @@
         </div>
       </div>
 
-      <!-- <div class="row form-group">
+      <div class="row form-group">
         <label for="pressure-active" class="col-sm-2 form-check-label"
           >Pressure Active</label
         >
@@ -446,9 +443,11 @@
             id="pressure-active"
             formControlName="pressure_active"
           />
-          <span class="checkbox-placeholder">Send to Server</span>
+          <span class="checkbox-placeholder"
+            >When true activates pressure sensor</span
+          >
         </div>
-      </div> -->
+      </div>
 
       <!-- <div class="form-group row">
         <label for="viable-construction-rate" class="col-sm-2 form-check-label"

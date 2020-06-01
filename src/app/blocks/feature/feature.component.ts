@@ -26,6 +26,7 @@ export class FeatureComponent implements OnInit {
     df: true,
     fpdf: true,
     p625: true,
+    gps: false,
   };
   default_value_checkbox: boolean = true;
   constructor(private fb: FormBuilder) {
@@ -41,13 +42,14 @@ export class FeatureComponent implements OnInit {
     });
 
     const features = this.fb.group({
-      mvm: [],
-      svdm: [],
-      mangle: [],
-      sdangle: [],
-      df: [],
-      fpdf: [],
-      p625: [],
+      mvm: [this.default_checkbox_values.mvm],
+      svdm: [this.default_checkbox_values.svdm],
+      mangle: [this.default_checkbox_values.mangle],
+      sdangle: [this.default_checkbox_values.sdangle],
+      df: [this.default_checkbox_values.df],
+      fpdf: [this.default_checkbox_values.fpdf],
+      p625: [this.default_checkbox_values.p625],
+      gps: [this.default_checkbox_values.gps],
     });
 
     if (items) {
@@ -68,6 +70,7 @@ export class FeatureComponent implements OnInit {
           df: [this.items[i].df],
           fpdf: [this.items[i].fpdf],
           p625: [this.items[i].p625],
+          gps: [this.items[i].gps],
         });
         // discretePromptItem.controls.values.setValue(this.fb.array(temp));
         this.featureForms.push(featureItem);
@@ -97,6 +100,7 @@ export class FeatureComponent implements OnInit {
     if (this.disableInput == true) {
       this.featureForm.disable();
     }
+    this.submit();
   }
   addFeatureGroup(): FormGroup {
     return this.fb.group({
