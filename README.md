@@ -1,3 +1,9 @@
+# If you do not have angular installed please do the following:
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" 
+-sudo npm install -g @angular/cli\u2029npm install --save-dev @angular-devkit/build-angular 
+-sudo npm install --save-dev @angular-devkit/build-angular
+ -ng serv
+
 # NodeAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
